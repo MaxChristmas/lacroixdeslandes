@@ -1,11 +1,14 @@
 ---
 import MenuLayout from '../../layouts/MenuLayout.astro';
-import menusSemaine from '../../data/menus-semaine.json';
+import { getMenusSemaine } from '../../lib/menus-semaine';
+
+const menusSemaine = await getMenusSemaine();
 ---
 
 <MenuLayout
   title="Menus de la semaine"
   pageTitle="Les menus de la semaine"
+  description="Nous servons également tous les midis la pièce du boucher, une lasagne au bœuf maison, un choix de 7 burgers accompagnés de frites ou des légumes du jour."
   intro="Nous servons également tous les midis la pièce du boucher, une lasagne au bœuf maison, un choix de 7 burgers accompagnés de frites ou des légumes du jour"
 >
   <div class="card p-6 sm:p-10 lg:p-18">

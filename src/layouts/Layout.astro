@@ -12,8 +12,10 @@ interface Props {
 const {
   title,
   description = "Restaurant traditionnel à Saint-Gorgon (Morbihan). Cuisine fait maison, produits locaux, menus du jour, burgers, pizzas & options traiteur. Réservez au 02 99 71 93 68.",
-  ogImage = "/images/restaurant-facade.jpg"
+  ogImage = "/images/og-image.jpg"
 } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, 'https://www.lacroixdeslandes.fr');
 ---
 
 <!DOCTYPE html>
@@ -30,15 +32,15 @@ const {
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={ogImage} />
+    <meta property="og:image" content={new URL(ogImage, 'https://www.lacroixdeslandes.fr').href} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={ogImage} />
+    <meta property="twitter:image" content={new URL(ogImage, 'https://www.lacroixdeslandes.fr').href} />
 
     <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
     <link rel="apple-touch-icon" href="/images/webclip.svg" />
-    <link rel="canonical" href="https://www.lacroixdeslandes.fr/" />
+    <link rel="canonical" href={canonicalURL.href} />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

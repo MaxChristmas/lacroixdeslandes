@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import menusSemaine from '../data/menus-semaine.json';
+import { getMenusSemaine } from '../lib/menus-semaine';
+
+const menusSemaine = await getMenusSemaine();
 import menuCategories from '../data/menu-categories.json';
 import services from '../data/services.json';
 import reviews from '../data/reviews.json';
