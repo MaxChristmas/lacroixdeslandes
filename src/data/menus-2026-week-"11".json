@@ -1,1 +1,0 @@
-{   "message": "update menus semaine {{formatDate(now; \"WW\")}}",   "content": "{{base64(206.menus_json)}}" }
