@@ -1,0 +1,38 @@
+[
+  {
+    "icon": "/images/icon-bread.png",
+    "title": "Dépôt de pain",
+    "description": "Vous y trouverez un choix de pain, baguettes et de pains spéciaux sur commande.",
+    "alt": "Icone de dépot de pain"
+  },
+  {
+    "icon": "/images/icon-gas.png",
+    "title": "Dépôt de gaz",
+    "description": "Distributeur de gaz, butagaz 13 kg et antargaz 13 kg.",
+    "alt": "Icone de dépot de gaz"
+  },
+  {
+    "icon": "/images/icon-handicap.png",
+    "title": "Accès handicapé",
+    "description": "Accessibilité aux places de stationnement, sanitaires, largeur des portes, rampe.",
+    "alt": "Icone d'accès handicapé"
+  },
+  {
+    "icon": "/images/icon-changing-table.png",
+    "title": "Table à langer",
+    "description": "Indispensable pour changer les tout-petits.",
+    "alt": "Icone de table à langer"
+  },
+  {
+    "icon": "/images/icon-cash.png",
+    "title": "Retrait d'argent",
+    "description": "Pour permettre aux habitants vivant dans des zones rurales d'avoir accès au retrait bancaires. Crédit agricole et crédit mutuel.",
+    "alt": "Icone de retrait d'argent"
+  },
+  {
+    "icon": "/images/icon-newspaper.png",
+    "title": "Dépot de journaux",
+    "description": "Dépôt légal de journaux, Ouest France ainsi que les informations.",
+    "alt": "Icone de dépot de journaux"
+  }
+]

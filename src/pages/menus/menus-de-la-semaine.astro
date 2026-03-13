@@ -1,0 +1,24 @@
+---
+import MenuLayout from '../../layouts/MenuLayout.astro';
+import menusSemaine from '../../data/menus-semaine.json';
+---
+
+<MenuLayout
+  title="Menus de la semaine"
+  pageTitle="Les menus de la semaine"
+  intro="Nous servons également tous les midis la pièce du boucher, une lasagne au bœuf maison, un choix de 7 burgers accompagnés de frites ou des légumes du jour"
+>
+  <div class="card p-6 sm:p-10 lg:p-18">
+    {menusSemaine.map((menu, i) => (
+      <>
+        {i > 0 && <hr class="border-neutral-300 my-6" />}
+        <div>
+          <div class="text-neutral-800 font-semibold uppercase tracking-wider text-base sm:text-lg mb-2">
+            {menu.label}
+          </div>
+          <p class="text-neutral-600 leading-relaxed text-base sm:text-xl">{menu.description}</p>
+        </div>
+      </>
+    ))}
+  </div>
+</MenuLayout>

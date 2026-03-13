@@ -1,0 +1,36 @@
+---
+import MenuLayout from '../../layouts/MenuLayout.astro';
+
+const burgers = [
+  { name: "Le Chèvre", price: "11,70€", desc: "Pain burger, steak Angus, sauce pita et barbecue, tomate bio, salade locale, fromage de chèvre, cheddar, oignons caramélisés.", image: "/images/burger-chevre.webp" },
+  { name: "Le Classique", price: "11,70€", desc: "Pain burger, steak haché Angus, salade locale, cornichons, tomates bio, oignons caramélisés, sauce burger, édam.", image: "/images/burger-classique.webp" },
+  { name: "Le Old Jock", price: "11,70€", desc: "Pain burger, steak haché Angus, oignons caramélisés, tomates, St Nectaire, salade locale, sauce tartare.", image: "/images/burger-old-jock.webp" },
+  { name: "Ar Poualed", price: "11,70€", desc: "Pain burger, steak haché maison de poulet Français, sauce curry, oignons cuits, salade locale, St Nectaire.", image: "/images/burger-ar-poualed.webp" },
+  { name: "Le Klasel", price: "11,70€", desc: "Pain burger, steak haché de Charolais, oignons rouges, sauce tartare, salade locale, Camembert.", image: "/images/burger-klasel.webp" },
+  { name: "Le Rozel", price: "11,70€", desc: "Pain burger, steak haché de Charolais, bacon, oignons rouges, salade locale, raclette.", image: "/images/burger-rozel.webp" },
+  { name: "Le Sen Koko", price: "11,70€", desc: "Pain burger, steak haché de Charolais, Roquefort, Cheddar, salade locale, oignons caramélisés.", image: "/images/burger-sen-koko.webp" },
+  { name: "Le P'tit Gorgonais", price: "11,40€", desc: "Pain burger, steak haché de Charolais basique.", image: "/images/burger-ptit-gorgonais.webp" },
+  { name: "Crispy de poulet", price: "9,90€", desc: "Pain burger, blanc de poulet enrobé de corn flakes, salade locale, sauce tartare.", image: "/images/burger-crispy.webp" },
+];
+---
+
+<MenuLayout
+  title="Nos Burgers"
+  pageTitle="Nos burgers"
+  intro="Tous nos burgers sont conçus avec du pain bio et garnis principalement de produits locaux et issus de culture biologique."
+  wide
+>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    {burgers.map(burger => (
+      <div class="card overflow-hidden text-center">
+        <img src={burger.image} alt={burger.name} class="w-full h-56 object-cover" loading="lazy" />
+        <div class="p-6">
+          <div class="text-neutral-800 font-semibold text-lg mb-1">{burger.price}</div>
+          <h3 class="text-xl mb-3">{burger.name}</h3>
+          <p class="text-neutral-600 text-sm leading-relaxed">{burger.desc}</p>
+          <hr class="border-neutral-300 mt-6 mx-auto w-16" />
+        </div>
+      </div>
+    ))}
+  </div>
+</MenuLayout>

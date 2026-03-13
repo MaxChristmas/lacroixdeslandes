@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:lacroixdeslandes.com)",
+      "WebFetch(domain:www.lacroixdeslandes.fr)",
+      "Bash(curl -sL https://www.lacroixdeslandes.fr/)",
+      "Bash(curl -sL \"https://cdn.prod.website-files.com/65a66d17d740f6ccfb7f289a/css/la-croix-des-landes-cb5013.webflow.shared.9bd39bb29.css\")",
+      "Read(//tmp/**)",
+      "Bash(grep -oE '#[0-9a-fA-F]{3,8}' /tmp/webflow-styles.css)",
+      "Bash(npm run:*)",
+      "Bash(kill %1)",
+      "Bash(curl -sL \"https://cdn.prod.website-files.com/65a66d18d740f6ccfb7f293b/676aae1cd1e1ccd8b671dbfd_burger1.webp\" -o burger-chevre.webp)",
+      "Bash(curl -sL \"https://cdn.prod.website-files.com/65a66d18d740f6ccfb7f293b/676aae4951b29de7537d5a3d_burger2.webp\" -o burger-classique.webp)",
+      "Bash(curl -sL \"https://cdn.prod.website-files.com/65a66d18d740f6ccfb7f293b/676aae6c61171a2b1725cc8f_burger3.webp\" -o burger-old-jock.webp)",
+      "Bash(curl -sL \"https://cdn.prod.website-files.com/65a66d18d740f6ccfb7f293b/676aae9f7e04d0c6a448edfe_burger4.webp\" -o burger-ar-poualed.webp)",
+      "Bash(curl -sL \"https://cdn.prod.website-files.com/65a66d18d740f6ccfb7f293b/67893e60ece32ceeac6710b6_burger-klasel.webp\" -o burger-klasel.webp)",
+      "Bash(curl -sL \"https://cdn.prod.website-files.com/65a66d18d740f6ccfb7f293b/676aaef13818034b43149163_burger6.webp\" -o burger-rozel.webp)",
+      "Bash(curl -sL \"https://cdn.prod.website-files.com/65a66d18d740f6ccfb7f293b/676aaf2251b29de7537e4431_burger7.webp\" -o burger-sen-koko.webp)",
+      "Bash(curl -sL \"https://cdn.prod.website-files.com/65a66d18d740f6ccfb7f293b/676aaf4eec7908e84e41e4cb_burger8.webp\" -o burger-ptit-gorgonais.webp)",
+      "Bash(curl -sL \"https://cdn.prod.website-files.com/65a66d18d740f6ccfb7f293b/676aaf90d1e1ccd8b6733057_burger9.webp\" -o burger-crispy.webp)",
+      "Bash(ls -la burger-*.webp)"
+    ],
+    "additionalDirectories": [
+      "/Users/maxence/works/lacroixdeslandes/public",
+      "/tmp"
+    ]
+  }
+}

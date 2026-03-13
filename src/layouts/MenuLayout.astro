@@ -1,0 +1,40 @@
+---
+import Layout from './Layout.astro';
+
+interface Props {
+  title: string;
+  pageTitle: string;
+  description?: string;
+  price?: string;
+  note?: string;
+  intro?: string;
+  wide?: boolean;
+}
+
+const { title, pageTitle, description, price, note, intro, wide = false } = Astro.props;
+---
+
+<Layout title={`${pageTitle} | La Croix des Landes`} description={description}>
+  <!-- Dark hero banner -->
+  <section class="bg-neutral-800 py-12 sm:py-20 lg:py-28">
+    <div class="container-default text-center">
+      <h1 class="text-neutral-100 mb-4">{pageTitle}</h1>
+      {price && (
+        <div class="text-3xl font-semibold text-neutral-100 mb-2">{price}</div>
+      )}
+      {note && (
+        <div class="text-red-lcdl font-medium mt-2">{note}</div>
+      )}
+      {intro && (
+        <p class="mt-6 text-neutral-300 max-w-[700px] mx-auto">{intro}</p>
+      )}
+    </div>
+  </section>
+
+  <!-- Content -->
+  <section class="section bg-neutral-200 pt-16! lg:pt-24!">
+    <div class={`container-default ${wide ? '' : 'max-w-[1000px]!'}`}>
+      <slot />
+    </div>
+  </section>
+</Layout>

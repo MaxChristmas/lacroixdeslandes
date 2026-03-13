@@ -1,0 +1,70 @@
+---
+const menuLinks = [
+  { label: "Menus du Jour", href: "/menus/menus-de-la-semaine" },
+  { label: "Menus du chef", href: "/menus/menus-du-chef" },
+  { label: "Menus à la carte", href: "/menus/menus-a-la-carte" },
+  { label: "Pizzas", href: "/menus/pizzas" },
+  { label: "Burgers", href: "/menus/burgers" },
+  { label: "Traiteur", href: "/menus/menus-traiteur" },
+];
+---
+
+<header class="sticky top-0 z-50 border-b border-neutral-300 bg-neutral-100 py-5">
+  <div class="container-default">
+    <div class="flex items-center justify-between">
+      <!-- Logo -->
+      <a href="/" class="max-w-[143px] transition-transform hover:scale-[0.98]">
+        <img src="/images/logo.png" alt="La Croix des Landes" width="143" loading="lazy" />
+      </a>
+
+      <!-- CTA -->
+      <div class="flex items-center gap-3">
+        <a href="#location-and-map" class="btn-primary small red-button hidden md:inline-block">
+          Où nous trouver
+        </a>
+        <!-- Mobile menu button -->
+        <button
+          id="mobile-menu-btn"
+          class="md:hidden flex flex-col gap-1.5 p-2"
+          aria-label="Menu"
+        >
+          <span class="block w-6 h-0.5 bg-neutral-800 transition-transform" id="bar1"></span>
+          <span class="block w-6 h-0.5 bg-neutral-800 transition-opacity" id="bar2"></span>
+          <span class="block w-6 h-0.5 bg-neutral-800 transition-transform" id="bar3"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden md:hidden border-t border-neutral-300 bg-neutral-100">
+    <nav class="container-default py-6">
+      <ul class="space-y-4">
+        {menuLinks.map(link => (
+          <li>
+            <a href={link.href} class="block text-neutral-800 font-medium uppercase tracking-wider text-sm py-1">
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+      <div class="mt-6 pt-4 border-t border-neutral-300">
+        <a href="tel:0299719368" class="block text-neutral-800 font-medium">📞 02 99 71 93 68</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<script is:inline>
+  (function() {
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    if (!btn || !menu) return;
+
+    btn.addEventListener('click', () => {
+      const isOpen = !menu.classList.contains('hidden');
+      menu.classList.toggle('hidden');
+      btn.setAttribute('aria-expanded', String(!isOpen));
+    });
+  })();
+</script>

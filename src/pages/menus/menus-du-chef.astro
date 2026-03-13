@@ -1,0 +1,54 @@
+---
+import MenuLayout from '../../layouts/MenuLayout.astro';
+---
+
+<MenuLayout
+  title="Menu du Chef"
+  pageTitle="Le menu du chef"
+  price="30,80 €"
+  note="Menu sur réservation"
+>
+  <div class="card p-6 sm:p-10 lg:p-18">
+    <!-- Entrées -->
+    <div>
+      <h2 class="text-2xl mb-4">Entrées</h2>
+      <ul class="space-y-3">
+        <li class="text-neutral-600 text-base sm:text-lg">Pavé de merlus rôti avec sauce au choix et sa garniture de saison</li>
+        <li class="text-neutral-600 text-base sm:text-lg">Méli mélo gourmand (jambon de pays, pâté maison, salade de saison, parmesan, verrine, pain d'épices, tartare de tomate, condiments)</li>
+        <li class="text-neutral-600 text-base sm:text-lg">Méli-mélo de la mer (salade locale, saumon fumé, crevettes, tartare de tomate bretonne, mousse d'avocat, condiments, terrine de sardines, pain d'épice)</li>
+        <li class="text-neutral-600 text-base sm:text-lg">Salade locale</li>
+      </ul>
+    </div>
+
+    <hr class="border-neutral-300 my-8" />
+
+    <!-- Plats -->
+    <div>
+      <h2 class="text-2xl mb-4">Plats</h2>
+      <ul class="space-y-3">
+        <li class="text-neutral-600 text-base sm:text-lg">Joue de porc confite à l'ancienne en cocotte</li>
+        <li class="text-neutral-600 text-base sm:text-lg">Cuisse de canard farcie et sa sauce aux cèpes</li>
+        <li class="text-neutral-600 text-base sm:text-lg">Paleron de bœuf breton sauce au choix</li>
+      </ul>
+    </div>
+
+    <hr class="border-neutral-300 my-8" />
+
+    <!-- Fromage -->
+    <div>
+      <h2 class="text-2xl mb-4">Fromage <span class="text-red-lcdl font-medium text-lg">(supplément 3€)</span></h2>
+      <p class="text-neutral-600 text-base sm:text-lg">Duo de fromage et sa salade de saison</p>
+    </div>
+
+    <hr class="border-neutral-300 my-8" />
+
+    <!-- Desserts -->
+    <div>
+      <h2 class="text-2xl mb-4">Desserts</h2>
+      <ul class="space-y-3">
+        <li class="text-neutral-600 text-base sm:text-lg">Assiette de gourmandises</li>
+        <li class="text-neutral-600 text-base sm:text-lg">Gâteau pâtissier <span class="text-red-lcdl font-medium">(supplément 3€)</span></li>
+      </ul>
+    </div>
+  </div>
+</MenuLayout>

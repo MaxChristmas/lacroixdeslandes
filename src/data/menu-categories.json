@@ -1,0 +1,37 @@
+[
+  {
+    "title": "Menus du jour",
+    "description": "Retrouver chaque semaine nos menus de la semaine.",
+    "image": "/images/menu-du-jour.jpg",
+    "href": "/menus/menus-de-la-semaine",
+    "linkText": "Voir le menu"
+  },
+  {
+    "title": "Burgers",
+    "description": "Venez découvrir nos burgers.",
+    "image": "/images/burgers.jpg",
+    "href": "/menus/burgers",
+    "linkText": "Voir les burgers"
+  },
+  {
+    "title": "Menus du Chef",
+    "description": "Uniquement sur réservation",
+    "image": "/images/menu-chef.jpg",
+    "href": "/menus/menus-du-chef",
+    "linkText": "Voir le menu"
+  },
+  {
+    "title": "Menus à la Carte",
+    "description": "Uniquement sur réservation",
+    "image": "/images/menu-carte.jpg",
+    "href": "/menus/menus-a-la-carte",
+    "linkText": "Voir le menu"
+  },
+  {
+    "title": "Pizzas",
+    "description": "Venez découvrir nos pizzas.",
+    "image": "/images/pizzas.webp",
+    "href": "/menus/pizzas",
+    "linkText": "Voir les pizzas"
+  }
+]

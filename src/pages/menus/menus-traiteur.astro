@@ -1,0 +1,68 @@
+---
+import MenuLayout from '../../layouts/MenuLayout.astro';
+---
+
+<MenuLayout
+  title="Menu Traiteur"
+  pageTitle="Le menu traiteur"
+  intro="Retrouver notre offre menu traiteur. Merci de nous contacter pour une demande plus spécifique."
+>
+  <div class="card p-6 sm:p-10 lg:p-18">
+    <!-- Entrées Froides -->
+    <div>
+      <div class="flex justify-between items-start mb-4">
+        <h2 class="text-2xl">Entrées Froides</h2>
+        <span class="text-neutral-800 font-semibold text-xl">8,80€</span>
+      </div>
+      <ul class="space-y-3">
+        <li class="text-neutral-600 text-base sm:text-lg">Salade du pêcheur (crevettes, saumon fumé, salade, melon, brochette, vérine)</li>
+        <li class="text-neutral-600 text-base sm:text-lg">Méli-mélo (salade, jambon de pays, mousse de canard, vérine, melon, radis, tomates)</li>
+      </ul>
+    </div>
+
+    <hr class="border-neutral-300 my-8" />
+
+    <!-- Entrées Chaudes -->
+    <div>
+      <div class="flex justify-between items-start mb-4">
+        <h2 class="text-2xl">Entrées Chaudes</h2>
+        <span class="text-neutral-800 font-semibold text-xl">9,20€</span>
+      </div>
+      <ul class="space-y-3">
+        <li class="text-neutral-600 text-base sm:text-lg">Ballotine de saumon sauvage maison</li>
+        <li class="text-neutral-600 text-base sm:text-lg">Effiloché de raie maison</li>
+        <li class="text-neutral-600 text-base sm:text-lg">Dos de lieu rôti</li>
+        <li class="text-neutral-600 text-base sm:text-lg">Dos de colin</li>
+      </ul>
+    </div>
+
+    <hr class="border-neutral-300 my-8" />
+
+    <!-- Plat de Viande -->
+    <div>
+      <div class="flex justify-between items-start mb-4">
+        <h2 class="text-2xl">Plat de Viande</h2>
+        <span class="text-neutral-800 font-semibold text-xl">9,20€</span>
+      </div>
+      <ul class="space-y-3">
+        <li class="text-neutral-600 text-base sm:text-lg">Carbonade de bœuf Français</li>
+        <li class="text-neutral-600 text-base sm:text-lg">Rougaille</li>
+        <li class="text-neutral-600 text-base sm:text-lg">Cuissot de veau <span class="text-red-lcdl font-medium">(sup 3€)</span></li>
+        <li class="text-neutral-600 text-base sm:text-lg">Joue de porc confite à l'ancienne</li>
+        <li class="text-neutral-600 text-base sm:text-lg">Porcelet cuit au four à pain</li>
+        <li class="text-neutral-600 text-base sm:text-lg">Ballotine de poulet fermier maison</li>
+        <li class="text-neutral-600 text-base sm:text-lg">Cuisse de poulet fermier farcie</li>
+        <li class="text-neutral-600 text-base sm:text-lg">Paleron de bœuf Limousin</li>
+        <li class="text-neutral-600 text-base sm:text-lg">Jambon à l'os grillé</li>
+      </ul>
+    </div>
+
+    <hr class="border-neutral-300 my-8" />
+
+    <!-- Garnitures -->
+    <div>
+      <h2 class="text-2xl mb-4">Garnitures</h2>
+      <p class="text-neutral-600 text-base sm:text-lg">Pommes grenaille, risotto, flan de carottes bio, brunoise, gratin diverses options</p>
+    </div>
+  </div>
+</MenuLayout>

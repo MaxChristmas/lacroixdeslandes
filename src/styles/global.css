@@ -1,0 +1,245 @@
+@import "tailwindcss";
+
+@theme {
+  --color-neutral-100: #ffffff;
+  --color-neutral-200: #f8f8f8;
+  --color-neutral-300: #dadada;
+  --color-neutral-400: #aaaaaa;
+  --color-neutral-500: #878787;
+  --color-neutral-600: #5e5e5e;
+  --color-neutral-700: #474747;
+  --color-neutral-800: #0d0d0d;
+  --color-red-lcdl: #ef5f60;
+  --color-secondary-1: #2b2b2b;
+  --color-shadow-01: #0d0d0d0d;
+  --font-sans: "DM Sans", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-neutral-600);
+  font-size: 18px;
+  line-height: 1.667em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--color-neutral-800);
+    font-weight: 600;
+    line-height: 1.167em;
+  }
+
+  h1 { font-size: 72px; }
+  h2 { font-size: 48px; }
+  h3 { font-size: 32px; }
+  h4 { font-size: 24px; }
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.line-accent {
+  background-color: var(--color-neutral-800);
+  width: 100%;
+  max-width: 80px;
+  height: 3px;
+}
+
+.line-accent.white {
+  background-color: var(--color-neutral-100);
+}
+
+.line-accent._124px {
+  max-width: 124px;
+}
+
+/* Buttons */
+.btn-primary {
+  border: 1px solid var(--color-neutral-800);
+  background-color: var(--color-neutral-800);
+  color: var(--color-neutral-100);
+  text-align: center;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 22px 40px;
+  font-size: 18px;
+  line-height: 1.111em;
+  font-weight: 500;
+  transition: transform 0.3s, background-color 0.3s;
+  display: inline-block;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-secondary-1);
+  transform: scale3d(0.98, 0.98, 1.01);
+}
+
+.btn-primary.red-button {
+  background-color: var(--color-red-lcdl);
+  border-color: var(--color-red-lcdl);
+}
+
+.btn-primary.red-button:hover {
+  background-color: #d94f50;
+}
+
+.btn-primary.small {
+  padding: 16px 28px;
+  font-size: 16px;
+}
+
+.btn-secondary {
+  border: 1px solid var(--color-neutral-800);
+  color: var(--color-neutral-800);
+  text-align: center;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background-color: transparent;
+  padding: 22px 40px;
+  font-size: 18px;
+  line-height: 1.111em;
+  font-weight: 500;
+  transition: transform 0.3s, background-color 0.3s, color 0.3s;
+  display: inline-block;
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-secondary-1);
+  color: var(--color-neutral-100);
+  transform: scale3d(0.98, 0.98, 1.01);
+}
+
+/* Link with arrow */
+.link-wrapper {
+  display: flex;
+  align-items: center;
+  color: var(--color-neutral-800);
+  font-weight: 500;
+  transition: opacity 0.3s;
+}
+
+.link-wrapper:hover {
+  opacity: 0.7;
+}
+
+.link-wrapper.dark {
+  color: var(--color-neutral-800);
+}
+
+.link-wrapper.light {
+  color: var(--color-neutral-300);
+}
+
+.link-text {
+  font-size: 18px;
+  line-height: 1.111em;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.link-text.light {
+  color: var(--color-neutral-300);
+}
+
+/* Card */
+.card {
+  background-color: var(--color-neutral-100);
+  box-shadow: 0 4px 24px 0 var(--color-shadow-01);
+  overflow: hidden;
+}
+
+.card.shadow-long {
+  box-shadow: 0 14px 42px 0 var(--color-shadow-01);
+}
+
+/* Open status */
+.open-status {
+  color: var(--color-red-lcdl);
+  font-weight: 500;
+}
+
+.open-status.is-open {
+  color: #05c168;
+}
+
+/* Hide scrollbar */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Container */
+.container-default {
+  max-width: 1270px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+/* Section spacing */
+.section {
+  padding-top: 220px;
+  padding-bottom: 220px;
+}
+
+/* Text utility classes */
+.text-200 {
+  font-size: 14px;
+  line-height: 1.286em;
+}
+
+.text-100 {
+  font-size: 18px;
+  line-height: 1.111em;
+}
+
+/* Responsive */
+@media screen and (max-width: 991px) {
+  .section {
+    padding-top: 120px;
+    padding-bottom: 120px;
+  }
+  h1 { font-size: 48px; }
+  h2 { font-size: 36px; }
+  h3 { font-size: 26px; }
+}
+
+@media screen and (max-width: 767px) {
+  .section {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+  h1 { font-size: 36px; }
+  h2 { font-size: 30px; }
+  body { font-size: 16px; }
+  .btn-primary, .btn-secondary {
+    padding: 18px 32px;
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  h1 { font-size: 26px; }
+  h2 { font-size: 24px; }
+  .section {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+}

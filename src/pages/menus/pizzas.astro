@@ -1,0 +1,38 @@
+---
+import MenuLayout from '../../layouts/MenuLayout.astro';
+
+const pizzas = [
+  { name: "LA P'TITE FILOU", subtitle: "(POUR LES ENFANTS)", price: "9,90 €", desc: "Pâte maison, sauce tomate maison, jambon, mozzarella.", image: "/images/pizza-ptite-filou.webp" },
+  { name: "La Croix des Landes", price: "14,90€", desc: "Pâte maison, sauce tomate maison, jambon, merguez, champignons, oignons rouges, mozzarella.", image: "/images/pizza-croix-des-landes.webp" },
+  { name: "La Montagnarde", price: "15,00€", desc: "Pâte maison, sauce tomate maison, lardons, oignons, pommes de terre, reblochon, mozzarella.", image: "/images/pizza-montagnarde.webp" },
+  { name: "L'España", price: "14,80€", desc: "Pâte maison, sauce tomate maison, poivrons, oignons rouges, chorizo, olives noires, mozzarella.", image: "/images/pizza-espana.webp" },
+  { name: "La Végétarienne", price: "13,50€", desc: "Pâte maison, sauce tomate maison, garniture saisonnière.", image: "/images/pizza-vegetarienne.webp" },
+  { name: "La Calzone", price: "14,50€", desc: "Pâte maison, sauce tomate maison, jambon, champignons, crème fraîche, œuf bio, mozzarella.", image: "/images/pizza-calzone.webp" },
+  { name: "La Tono", price: "13,00€", desc: "Pâte maison, sauce tomate maison, thon, oignons, mozzarella, olives.", image: "/images/pizza-tono.webp" },
+  { name: "La Normande", price: "15,10€", desc: "Pâte maison, sauce tomate maison, lardons, oignons, champignons, crème fraîche, camembert, pommes bio, mozzarella.", image: "/images/pizza-normande.webp" },
+  { name: "La Spéciale VV", price: "15,80€", desc: "Pâte maison, sauce tomate maison, magret de canard, chèvre, pommes bio, miel, mozzarella, champignons.", image: "/images/pizza-speciale-vv.webp" },
+  { name: "La Pizza de votre choix", price: "14,80€", desc: "Pâte maison, sauce tomate maison + 4 ingrédients au choix.", image: "/images/pizza-vegetarienne.webp" },
+];
+---
+
+<MenuLayout
+  title="Nos Pizzas"
+  pageTitle="Nos pizzas"
+  intro="Toutes nos pizzas sont conçues à base de pâte maison bio et également garnies de produits locaux issus d'agriculture biologique."
+  wide
+>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    {pizzas.map(pizza => (
+      <div class="card overflow-hidden text-center">
+        <img src={pizza.image} alt={pizza.name} class="w-full h-56 object-cover" loading="lazy" />
+        <div class="p-6">
+          <div class="text-neutral-800 font-semibold text-lg mb-1">{pizza.price}</div>
+          <h3 class="text-xl mb-1">{pizza.name}</h3>
+          {pizza.subtitle && <div class="text-neutral-500 text-sm uppercase mb-2">{pizza.subtitle}</div>}
+          <p class="text-neutral-600 text-sm leading-relaxed">{pizza.desc}</p>
+          <hr class="border-neutral-300 mt-6 mx-auto w-16" />
+        </div>
+      </div>
+    ))}
+  </div>
+</MenuLayout>

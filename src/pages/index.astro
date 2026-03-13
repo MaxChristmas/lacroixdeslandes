@@ -1,0 +1,418 @@
+---
+import Layout from '../layouts/Layout.astro';
+import menusSemaine from '../data/menus-semaine.json';
+import menuCategories from '../data/menu-categories.json';
+import services from '../data/services.json';
+import reviews from '../data/reviews.json';
+---
+
+<Layout title="Restaurant à Saint-Gorgon | La Croix des Landes (Morbihan) – Fait Maison & Produits Locaux">
+
+  <!-- HERO SECTION -->
+  <section class="section pt-16! lg:pt-24! pb-0! bg-cover bg-center bg-no-repeat" style="background-image: linear-gradient(rgba(255,255,255,0.88), rgba(255,255,255,0.88)), url('/images/hero-bg.png');">
+    <div class="container-default">
+      <div class="mb-8 lg:mb-16">
+        <div class="grid grid-cols-1 lg:grid-cols-[1fr_0.75fr] gap-8 lg:gap-12 items-start">
+          <!-- Left: Text -->
+          <div>
+            <div class="mb-6">
+              <div class="line-accent _124px"></div>
+            </div>
+            <h1 class="text-neutral-800 text-[26px] sm:text-[36px] md:text-[45px] leading-tight mb-4">
+              Cuisine et produits locaux, ici le fait-maison à vraiment du goût.
+            </h1>
+            <h2 class="text-neutral-800 text-[18px] sm:text-[20px] md:text-[22px] font-semibold mb-2">Restaurant à Saint-Gorgon</h2>
+            <div class="text-neutral-600 mb-8">Rue de la Croix des Landes 56350 Saint Gorgon</div>
+            <a href="tel:0299719368" class="btn-primary red-button inline-block">
+              📞 02 99 71 93 68
+            </a>
+            <div class="mt-8">
+              <div class="text-neutral-800 font-medium">Excellent</div>
+              <div class="flex items-center gap-2">
+                <a href="https://maps.app.goo.gl/jtMJ3LKNJKhHaKpP8" target="_blank" rel="noopener" class="hover:opacity-70 transition-opacity">⭐ 4.7 / 5</a>
+                <span class="text-neutral-500">basé sur 61 avis</span>
+              </div>
+              <img src="/images/logo-badge.svg" alt="" class="h-5 mt-2" loading="lazy" />
+            </div>
+          </div>
+
+          <!-- Right: Menu du jour -->
+          <div class="bg-neutral-800 p-8 lg:p-10 text-center">
+            <h3 class="text-red-lcdl text-2xl mb-6">Le menu du jour</h3>
+            <div id="menu-du-jour-wrapper" style="visibility: hidden;">
+              {menusSemaine.map(menu => (
+                <div data-day-index={menu.dayIndex} class="hidden">
+                  <div class="text-neutral-100 font-medium lowercase first-letter:uppercase mb-4">{menu.label}</div>
+                  <p class="text-neutral-300 leading-relaxed">{menu.description}</p>
+                </div>
+              ))}
+            </div>
+            <div class="mt-6">
+              <div id="open-status-menu" class="text-red-lcdl font-semibold text-lg">Horaire à vérifier sur Google</div>
+            </div>
+            <div class="mt-6 text-neutral-400 text-sm leading-relaxed">
+              Vous pouvez déguster également la <strong class="text-neutral-100">pièce de boucher Française</strong>, l'<strong class="text-neutral-100">anguille de Loire</strong> et nos <strong class="text-neutral-100">burgers</strong> et uniquement le weekend nos délicieuses <strong class="text-neutral-100">pizzas</strong>. Tout ça c'est du fait-maison bien sûr !
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Restaurant facade image (full width) -->
+    <div class="mt-10 lg:mt-20">
+      <img
+        src="/images/restaurant-facade.jpg"
+        alt="Façade du restaurant La Croix des Landes"
+        class="w-full max-h-[714px] object-cover"
+        loading="lazy"
+      />
+    </div>
+  </section>
+
+  <!-- DISCOVER MENUS SECTION -->
+  <section id="menus" class="section bg-neutral-800">
+    <div class="container-default">
+      <div class="text-center mb-16">
+        <div class="mb-6 flex justify-center">
+          <div class="line-accent _124px white"></div>
+        </div>
+        <h2 class="text-neutral-100 mb-4">Découvrez nos menus</h2>
+        <div class="max-w-[552px] mx-auto">
+          <p class="text-neutral-400">Nos menus sont disponibles sur place ou à emporter dans la limite des heures d'ouvertures et de la disponibilité des produits.</p>
+        </div>
+      </div>
+
+      <!-- Menu cards carousel -->
+      <div class="relative">
+        <!-- Arrow left -->
+        <button
+          id="carousel-prev"
+          class="hidden lg:flex absolute -left-16 top-1/2 -translate-y-1/2 z-10 w-12 h-12 items-center justify-center border border-neutral-400 text-neutral-100 hover:bg-neutral-100 hover:text-neutral-800 transition-colors"
+          aria-label="Précédent"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+
+        <!-- Slides -->
+        <div id="carousel-track" class="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-hide">
+          {menuCategories.map(cat => (
+            <a href={cat.href} class="group flex-shrink-0 w-[85%] sm:w-[45%] lg:w-[calc(50%-12px)] flex flex-col bg-neutral-100 overflow-hidden transition-transform hover:scale-[0.98] snap-start">
+              <div class="aspect-[16/10] overflow-hidden">
+                <img src={cat.image} alt={cat.title} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+              </div>
+              <div class="p-6 flex flex-col flex-1">
+                <h3 class="text-xl mb-3">{cat.title}</h3>
+                <p class="text-neutral-600 text-sm mb-6">{cat.description}</p>
+                <div class="mt-auto">
+                  <span class="text-neutral-800 font-medium uppercase tracking-wider text-sm flex items-center gap-2">
+                    {cat.linkText}
+                    <span class="transition-transform group-hover:translate-x-1">→</span>
+                  </span>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+
+        <!-- Arrow right -->
+        <button
+          id="carousel-next"
+          class="hidden lg:flex absolute -right-16 top-1/2 -translate-y-1/2 z-10 w-12 h-12 items-center justify-center border border-neutral-400 text-neutral-100 hover:bg-neutral-100 hover:text-neutral-800 transition-colors"
+          aria-label="Suivant"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+
+      <!-- Carousel script -->
+      <script is:inline>
+        (function() {
+          const track = document.getElementById('carousel-track');
+          const prev = document.getElementById('carousel-prev');
+          const next = document.getElementById('carousel-next');
+          if (!track || !prev || !next) return;
+
+          const scrollAmount = () => track.querySelector('a')?.offsetWidth + 24 || 400;
+
+          prev.addEventListener('click', () => {
+            track.scrollBy({ left: -scrollAmount(), behavior: 'smooth' });
+          });
+          next.addEventListener('click', () => {
+            track.scrollBy({ left: scrollAmount(), behavior: 'smooth' });
+          });
+        })();
+      </script>
+    </div>
+  </section>
+
+  <!-- TRAITEUR SECTION -->
+  <section class="section">
+    <div class="container-default">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <div class="mb-8">
+            <div class="line-accent _124px"></div>
+          </div>
+          <h2 class="mb-6">Notre offre traiteur</h2>
+          <div class="max-w-[480px]">
+            <p class="mb-12">A votre disposition pour organiser vos repas de famille, baptême, anniversaire grâce à notre offre traiteur. De 10 à 300 convives, notre équipe peut répondre à vos demandes.</p>
+          </div>
+          <a href="/menus/menus-traiteur" class="btn-secondary">Voir Notre Offre</a>
+        </div>
+        <div>
+          <img
+            src="/images/traiteur.jpg"
+            alt="Buffet présenté par la croix des landes"
+            class="w-full object-cover"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <div class="-mt-20 lg:-mt-56">
+    <section id="contact" class="section relative py-0!">
+      <div class="relative z-10">
+        <div class="container-default">
+          <div class="bg-neutral-100 shadow-[0_4px_24px_0_var(--color-shadow-01)] flex flex-col lg:flex-row justify-between py-10 lg:py-20 px-6 lg:px-16">
+            <!-- Contact -->
+            <div class="max-w-[285px] w-full flex flex-col mb-8 lg:mb-0">
+              <div class="mb-9">
+                <h2 class="uppercase text-200 tracking-wider font-medium mb-8">Nous contacter</h2>
+                <div class="space-y-4">
+                  <div class="flex flex-wrap justify-between items-center gap-2">
+                    <span class="text-200 font-medium text-neutral-800">Téléphone:</span>
+                    <a href="tel:0299719368" class="link-wrapper">
+                      <span class="link-text text-sm">02 99 71 93 68</span>
+                    </a>
+                  </div>
+                  <div class="flex flex-wrap justify-between items-center gap-2">
+                    <span class="text-200 font-medium text-neutral-800">Email:</span>
+                    <span class="link-text text-sm">lacroixdeslandes@orange.fr</span>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-auto text-neutral-800 font-medium text-sm">
+                Réservation de préférence par téléphone ou sur place
+              </div>
+            </div>
+
+            <!-- Divider -->
+            <div class="hidden lg:block w-px bg-neutral-300 mx-6"></div>
+            <div class="lg:hidden h-px bg-neutral-300 my-6"></div>
+
+            <!-- Location -->
+            <div class="max-w-[228px] flex flex-col mb-8 lg:mb-0">
+              <div class="mb-9">
+                <h2 class="uppercase text-200 tracking-wider font-medium mb-8">Localisation</h2>
+                <div class="space-y-1">
+                  <div>Rue de la Croix des Landes</div>
+                  <div>56350 Saint Gorgon</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Divider -->
+            <div class="hidden lg:block w-px bg-neutral-300 mx-6"></div>
+            <div class="lg:hidden h-px bg-neutral-300 my-6"></div>
+
+            <!-- Hours note -->
+            <div class="max-w-[285px] w-full flex flex-col">
+              <div class="mt-auto text-neutral-800 font-medium text-sm">
+                Pour les vacances et jours fériés, merci de vous référer aux heures affichées sur Google
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- SERVICES SECTION -->
+  <section id="services" class="section bg-neutral-200">
+    <div class="container-default">
+      <div class="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-16 gap-6">
+        <div>
+          <div class="mb-8">
+            <div class="line-accent _124px"></div>
+          </div>
+          <h2 class="mb-0">Nos Services Annexes</h2>
+        </div>
+        <p class="max-w-[480px]">Tous ses services sont disponibles sur place et pendant les heures d'ouvertures du restaurant.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {services.map(service => (
+          <div class="card p-8">
+            <img src={service.icon} alt={service.alt} class="mb-4 h-12" loading="lazy" />
+            <h3 class="text-xl mb-2">{service.title}</h3>
+            <p class="text-neutral-600">{service.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM SECTION -->
+  <section id="team" class="section bg-neutral-800">
+    <div class="container-default">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+        <!-- Team photo -->
+        <div class="max-w-[625px]">
+          <img
+            src="/images/team.jpeg"
+            alt="Photo de l'équipe la croix des landes"
+            class="w-full object-cover"
+            loading="lazy"
+          />
+        </div>
+
+        <!-- Team text -->
+        <div>
+          <div class="mb-8">
+            <div class="line-accent _124px white"></div>
+          </div>
+          <h2 class="text-neutral-100 mb-6">L'équipe de<br />La Croix Des Landes</h2>
+          <p class="text-neutral-400 leading-relaxed">
+            Nous vous souhaitons la bienvenue à <strong class="text-neutral-100">la Croix Des Landes</strong> où nous sommes heureux de vous accueillir. Sachez que nous pouvons aussi vous proposer differentes prestations pour vos repas de famille, baptême, communion, anniversaire, mariage, repas d'association. De 10 à 300 convives notre équipe peut répondre à vos demandes.
+            <br /><br />
+            Toute notre équipe se tient prête pour organiser cette journée importante en fonction de vos envies et de vos désirs. Vous pouvez nous joindre au <strong class="text-neutral-100">02 99 71 93 68</strong> pour planifier cet évènement et convenir d'un rendez-vous si vous le souhaitez.
+            <br /><br />
+            Nous vous souhaitons de passer un <strong class="text-neutral-100">bon moment et un bon appétit!</strong>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS SECTION -->
+  <section class="section bg-neutral-200">
+    <div class="container-default">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+        <!-- Title + button -->
+        <div>
+          <div class="mb-8">
+            <div class="line-accent _124px"></div>
+          </div>
+          <h2 class="mb-4">Ce que nos clients disent de nous.</h2>
+          <p class="mb-9">N'hésitez pas à nous laisser un petit commentaire sur Goole. Cela nous aide beaucoup. Nous vous en sommes très recoonnaissant.</p>
+          <a href="https://www.google.com/search?q=la+croix+des+landes+saint+gorgon" target="_blank" rel="noopener" class="btn-primary red-button">
+            Accès au formulaire Google
+          </a>
+        </div>
+
+        <!-- Cathy -->
+        <div class="card shadow-long p-8">
+          <img src="/images/icon-stars.svg" alt="5 étoiles" class="mb-4" loading="lazy" />
+          <p class="mb-6">"{reviews[0].text}"</p>
+          <div class="text-neutral-800 font-medium">{reviews[0].author}</div>
+        </div>
+
+        <!-- Sylvain + François -->
+        <div class="space-y-6">
+          <div class="card shadow-long p-8">
+            <img src="/images/icon-stars.svg" alt="5 étoiles" class="mb-4" loading="lazy" />
+            <p class="mb-6">"{reviews[1].text}"</p>
+            <div class="text-neutral-800 font-medium">{reviews[1].author}</div>
+          </div>
+          <div class="card shadow-long p-8">
+            <img src="/images/icon-stars.svg" alt="5 étoiles" class="mb-4" loading="lazy" />
+            <p class="mb-6">"{reviews[2].text}"</p>
+            <div class="text-neutral-800 font-medium">{reviews[2].author}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FACEBOOK SECTION -->
+  <section class="section bg-neutral-200">
+    <div class="container-default">
+      <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-10 gap-6">
+        <div>
+          <div class="mb-8">
+            <div class="line-accent _124px"></div>
+          </div>
+          <h2 class="mb-0">Suivez nous sur Facebook</h2>
+        </div>
+        <div class="flex flex-wrap gap-4">
+          <a href="https://m.me/100063678783204" target="_blank" rel="noopener" class="btn-primary">💬 Nous écrire sur Messenger</a>
+          <a href="https://www.facebook.com/people/La-croix-des-landes/100063678783204/?locale=fr_FR" target="_blank" rel="noopener" class="btn-primary">Facebook</a>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <a href="https://www.facebook.com/people/La-croix-des-landes/100063678783204/" target="_blank" rel="noopener" class="overflow-hidden group">
+          <img src="/images/gallery-restaurant.jpeg" alt="Façade du restaurant la croix des landes" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+        </a>
+        <a href="https://www.facebook.com/people/La-croix-des-landes/100063678783204/" target="_blank" rel="noopener" class="overflow-hidden group">
+          <img src="/images/gallery-plat.jpeg" alt="Présentation de repas la croix des landes" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+        </a>
+        <a href="https://www.facebook.com/people/La-croix-des-landes/100063678783204/" target="_blank" rel="noopener" class="overflow-hidden group">
+          <img src="/images/gallery-herve.jpeg" alt="Hervé - chef de la croix des landes" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+        </a>
+        <a href="https://www.facebook.com/people/La-croix-des-landes/100063678783204/" target="_blank" rel="noopener" class="overflow-hidden group">
+          <img src="/images/gallery-aire-jeu.jpeg" alt="Espace enfants la croix des landes" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Day menu display script -->
+  <script is:inline>
+    (function () {
+      function dayIndex1to7(date) {
+        const js = date.getDay();
+        return js === 0 ? 7 : js;
+      }
+
+      function nowInParis() {
+        const parts = new Intl.DateTimeFormat('fr-FR', {
+          timeZone: 'Europe/Paris',
+          year: 'numeric', month: '2-digit', day: '2-digit',
+          hour: '2-digit', minute: '2-digit', second: '2-digit',
+          hour12: false
+        }).formatToParts(new Date()).reduce((acc, p) => (acc[p.type] = p.value, acc), {});
+        return new Date(`${parts.year}-${parts.month}-${parts.day}T${parts.hour}:${parts.minute}:${parts.second}`);
+      }
+
+      const today = dayIndex1to7(nowInParis());
+
+      document.querySelectorAll('[data-day-index]').forEach(el => {
+        const idx = parseInt(el.getAttribute('data-day-index'), 10);
+        if (idx === today) {
+          el.classList.remove('hidden');
+        }
+      });
+
+      const wrapper = document.getElementById('menu-du-jour-wrapper');
+      if (wrapper) wrapper.style.visibility = 'visible';
+    })();
+
+    // Open status webhook
+    (function () {
+      fetch('https://n8n.noventi.fr/webhook/a4eba9da-b52f-46aa-a520-3df852ef45b7', {
+        method: 'GET',
+        headers: { 'Accept': 'application/json' }
+      })
+      .then(r => {
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        return r.json();
+      })
+      .then(result => {
+        const els = document.querySelectorAll('#open-status-header, #open-status-menu');
+        els.forEach(el => {
+          if (result.isOpen) {
+            el.textContent = 'Actuellement ouvert !';
+            el.classList.remove('text-red-lcdl');
+            el.style.color = '#05c168';
+          }
+        });
+      })
+      .catch(err => console.error('Webhook error:', err));
+    })();
+  </script>
+</Layout>
