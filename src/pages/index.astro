@@ -127,9 +127,6 @@ const faqSchema = {
               </div>
             ))}
           </div>
-          <div class="mt-6">
-            <div id="open-status-menu" class="text-red-lcdl font-semibold text-lg">Horaire à vérifier sur Google</div>
-          </div>
           <div class="mt-6 text-neutral-400 text-sm leading-relaxed">
             Également : <strong class="text-neutral-300">pièce de boucher</strong>, <strong class="text-neutral-300">anguille de Loire</strong>, <strong class="text-neutral-300">burgers</strong> et le weekend nos <strong class="text-neutral-300">pizzas</strong>.
           </div>
@@ -521,27 +518,5 @@ const faqSchema = {
       if (wrapper) wrapper.style.visibility = 'visible';
     })();
 
-    // Open status webhook
-    (function () {
-      fetch('https://n8n.noventi.fr/webhook/a4eba9da-b52f-46aa-a520-3df852ef45b7', {
-        method: 'GET',
-        headers: { 'Accept': 'application/json' }
-      })
-      .then(r => {
-        if (!r.ok) throw new Error(`HTTP ${r.status}`);
-        return r.json();
-      })
-      .then(result => {
-        const els = document.querySelectorAll('#open-status-header, #open-status-menu');
-        els.forEach(el => {
-          if (result.isOpen) {
-            el.textContent = 'Actuellement ouvert !';
-            el.classList.remove('text-red-lcdl');
-            el.style.color = '#05c168';
-          }
-        });
-      })
-      .catch(err => console.error('Webhook error:', err));
-    })();
   </script>
 </Layout>
