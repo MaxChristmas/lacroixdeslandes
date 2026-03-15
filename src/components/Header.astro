@@ -7,64 +7,202 @@ const menuLinks = [
   { label: "Burgers", href: "/menus/burgers" },
   { label: "Traiteur", href: "/menus/menus-traiteur" },
 ];
+
+const currentPath = Astro.url.pathname;
 ---
 
-<header class="sticky top-0 z-50 border-b border-neutral-300 bg-neutral-100 py-5">
+<header id="site-header" class="sticky top-0 z-50 bg-neutral-100 border-b border-neutral-300 transition-shadow duration-300">
   <div class="container-default">
-    <div class="flex items-center justify-between">
+    <div class="flex items-center justify-between h-16 lg:h-20">
+
       <!-- Logo -->
-      <a href="/" class="max-w-[143px] transition-transform hover:scale-[0.98]">
-        <img src="/images/logo.png" alt="La Croix des Landes" width="143" loading="lazy" />
+      <a href="/" class="shrink-0 transition-opacity hover:opacity-80">
+        <img src="/images/logo.png" alt="La Croix des Landes" width="120" loading="eager" />
       </a>
 
-      <!-- CTA -->
-      <div class="flex items-center gap-3">
-        <a href="#location-and-map" class="btn-primary small red-button hidden md:inline-block">
-          Où nous trouver
+      <!-- Desktop nav -->
+      <nav class="hidden lg:flex items-center gap-1" aria-label="Navigation principale">
+
+        <a href="/"
+          class={`nav-link px-4 py-2 text-sm font-medium uppercase tracking-wider transition-colors ${currentPath === '/' ? 'text-neutral-800' : 'text-neutral-500 hover:text-neutral-800'}`}>
+          Accueil
         </a>
+
+        <!-- Menus dropdown -->
+        <div class="relative group">
+          <button
+            class={`nav-link flex items-center gap-1 px-4 py-2 text-sm font-medium uppercase tracking-wider transition-colors ${currentPath.startsWith('/menus') ? 'text-neutral-800' : 'text-neutral-500 hover:text-neutral-800'}`}
+            aria-expanded="false"
+            aria-haspopup="true"
+            id="menus-dropdown-btn"
+          >
+            Nos menus
+            <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M6 9l6 6 6-6"/>
+            </svg>
+          </button>
+
+          <!-- Dropdown panel -->
+          <div
+            id="menus-dropdown"
+            class="absolute top-full left-0 mt-1 w-52 bg-neutral-100 border border-neutral-300 shadow-lg opacity-0 invisible translate-y-1 transition-all duration-200 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0"
+          >
+            {menuLinks.map(link => (
+              <a
+                href={link.href}
+                class={`block px-5 py-3 text-sm font-medium uppercase tracking-wider border-b border-neutral-200 last:border-0 transition-colors ${currentPath === link.href ? 'text-red-lcdl bg-neutral-200' : 'text-neutral-600 hover:text-neutral-800 hover:bg-neutral-200'}`}
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <a href="/#contact"
+          class="nav-link px-4 py-2 text-sm font-medium uppercase tracking-wider text-neutral-500 hover:text-neutral-800 transition-colors">
+          Contact
+        </a>
+
+      </nav>
+
+      <!-- Right side -->
+      <div class="flex items-center gap-3">
+        <!-- Open status + phone (desktop) -->
+        <div class="hidden lg:flex items-center gap-4">
+          <div class="flex items-center gap-2">
+            <span id="open-status-header" class="text-red-lcdl font-medium text-sm"></span>
+          </div>
+          <a href="tel:0299719368" class="flex items-center gap-1.5 text-sm font-medium text-neutral-700 hover:text-neutral-800 transition-colors">
+            <svg class="w-4 h-4 text-red-lcdl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/>
+            </svg>
+            02 99 71 93 68
+          </a>
+        </div>
+
+        <a href="/#location-and-map" class="btn-primary small red-button hidden! lg:inline-block!">
+          Nous trouver
+        </a>
+
         <!-- Mobile menu button -->
         <button
           id="mobile-menu-btn"
-          class="md:hidden flex flex-col gap-1.5 p-2"
-          aria-label="Menu"
+          class="lg:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5"
+          aria-label="Ouvrir le menu"
+          aria-expanded="false"
         >
-          <span class="block w-6 h-0.5 bg-neutral-800 transition-transform" id="bar1"></span>
-          <span class="block w-6 h-0.5 bg-neutral-800 transition-opacity" id="bar2"></span>
-          <span class="block w-6 h-0.5 bg-neutral-800 transition-transform" id="bar3"></span>
+          <span class="block w-5 h-0.5 bg-neutral-800 transition-all duration-300 origin-center" id="bar1"></span>
+          <span class="block w-5 h-0.5 bg-neutral-800 transition-all duration-300" id="bar2"></span>
+          <span class="block w-5 h-0.5 bg-neutral-800 transition-all duration-300 origin-center" id="bar3"></span>
         </button>
       </div>
+
     </div>
   </div>
+</header>
 
-  <!-- Mobile menu -->
-  <div id="mobile-menu" class="hidden md:hidden border-t border-neutral-300 bg-neutral-100">
-    <nav class="container-default py-6">
-      <ul class="space-y-4">
+<!-- Mobile menu overlay -->
+<div
+  id="mobile-menu"
+  class="fixed inset-0 z-40 bg-neutral-100 flex flex-col translate-x-full transition-transform duration-300 ease-in-out lg:hidden"
+  aria-hidden="true"
+>
+  <!-- Mobile menu header -->
+  <div class="flex items-center justify-between px-6 h-16 border-b border-neutral-300 shrink-0">
+    <a href="/" class="transition-opacity hover:opacity-80">
+      <img src="/images/logo.png" alt="La Croix des Landes" width="100" loading="lazy" />
+    </a>
+    <button
+      id="mobile-menu-close"
+      class="w-10 h-10 flex items-center justify-center"
+      aria-label="Fermer le menu"
+    >
+      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 6L6 18M6 6l12 12"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile nav links -->
+  <nav class="flex-1 overflow-y-auto px-6 py-8" aria-label="Navigation mobile">
+    <a href="/" class="block py-4 text-lg font-semibold text-neutral-800 border-b border-neutral-200 uppercase tracking-wider">
+      Accueil
+    </a>
+
+    <div class="border-b border-neutral-200">
+      <div class="py-4 text-xs font-semibold text-neutral-400 uppercase tracking-widest">Nos menus</div>
+      <ul class="space-y-1 pb-4">
         {menuLinks.map(link => (
           <li>
-            <a href={link.href} class="block text-neutral-800 font-medium uppercase tracking-wider text-sm py-1">
+            <a
+              href={link.href}
+              class={`block py-2 text-base font-medium uppercase tracking-wider transition-colors ${currentPath === link.href ? 'text-red-lcdl' : 'text-neutral-700 hover:text-neutral-800'}`}
+            >
               {link.label}
             </a>
           </li>
         ))}
       </ul>
-      <div class="mt-6 pt-4 border-t border-neutral-300">
-        <a href="tel:0299719368" class="block text-neutral-800 font-medium">📞 02 99 71 93 68</a>
-      </div>
-    </nav>
+    </div>
+
+    <a href="/#contact" class="block py-4 text-lg font-semibold text-neutral-800 border-b border-neutral-200 uppercase tracking-wider">
+      Contact
+    </a>
+  </nav>
+
+  <!-- Mobile footer CTA -->
+  <div class="shrink-0 px-6 py-6 border-t border-neutral-300 space-y-3">
+    <a href="tel:0299719368" class="flex items-center justify-center gap-2 w-full btn-secondary">
+      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/>
+      </svg>
+      02 99 71 93 68
+    </a>
+    <a href="/#location-and-map" class="block w-full btn-primary red-button text-center">
+      Nous trouver
+    </a>
   </div>
-</header>
+</div>
 
 <script is:inline>
-  (function() {
+  (function () {
     const btn = document.getElementById('mobile-menu-btn');
+    const closeBtn = document.getElementById('mobile-menu-close');
     const menu = document.getElementById('mobile-menu');
-    if (!btn || !menu) return;
+    function openMenu() {
+      menu.classList.remove('translate-x-full');
+      menu.setAttribute('aria-hidden', 'false');
+      btn.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMenu() {
+      menu.classList.add('translate-x-full');
+      menu.setAttribute('aria-hidden', 'true');
+      btn.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
 
     btn.addEventListener('click', () => {
-      const isOpen = !menu.classList.contains('hidden');
-      menu.classList.toggle('hidden');
-      btn.setAttribute('aria-expanded', String(!isOpen));
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+      isOpen ? closeMenu() : openMenu();
     });
+
+    closeBtn.addEventListener('click', closeMenu);
+
+    // Close on backdrop (clicking a nav link)
+    menu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+
+    // Scroll shadow
+    const header = document.getElementById('site-header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 10) {
+        header.classList.add('shadow-md');
+      } else {
+        header.classList.remove('shadow-md');
+      }
+    }, { passive: true });
   })();
 </script>

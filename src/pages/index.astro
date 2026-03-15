@@ -11,69 +11,87 @@ import reviews from '../data/reviews.json';
 <Layout title="Restaurant à Saint-Gorgon | La Croix des Landes (Morbihan) – Fait Maison & Produits Locaux">
 
   <!-- HERO SECTION -->
-  <section class="section pt-16! lg:pt-24! pb-0! bg-cover bg-center bg-no-repeat" style="background-image: linear-gradient(rgba(255,255,255,0.88), rgba(255,255,255,0.88)), url('/images/hero-bg.png');">
-    <div class="container-default">
-      <div class="mb-8 lg:mb-16">
-        <div class="grid grid-cols-1 lg:grid-cols-[1fr_0.75fr] gap-8 lg:gap-12 items-start">
-          <!-- Left: Text -->
-          <div>
-            <div class="mb-6">
-              <div class="line-accent _124px"></div>
-            </div>
-            <h1 class="text-neutral-800 text-[26px] sm:text-[36px] md:text-[45px] leading-tight mb-4">
-              Cuisine et produits locaux, ici le fait-maison a vraiment du goût.
-            </h1>
-            <h2 class="text-neutral-800 text-[18px] sm:text-[20px] md:text-[22px] font-semibold mb-2">Restaurant à Saint-Gorgon</h2>
-            <div class="text-neutral-600 mb-8">Rue de la Croix des Landes 56350 Saint Gorgon</div>
-            <a href="tel:0299719368" class="btn-primary red-button inline-block">
-              📞 02 99 71 93 68
-            </a>
-            <div class="mt-8">
-              <div class="text-neutral-800 font-medium">Excellent</div>
-              <div class="flex items-center gap-2">
-                <a href="https://maps.app.goo.gl/jtMJ3LKNJKhHaKpP8" target="_blank" rel="noopener" class="hover:opacity-70 transition-opacity">⭐ 4.7 / 5</a>
-                <span class="text-neutral-500">basé sur 61 avis</span>
-              </div>
-              <img src="/images/logo-badge.svg" alt="" class="h-5 mt-2" loading="lazy" />
-            </div>
-          </div>
+  <section class="relative min-h-[90vh] flex flex-col justify-center overflow-hidden">
+    <!-- Background image -->
+    <img
+      src="/images/restaurant-facade.jpg"
+      alt="Façade du restaurant La Croix des Landes"
+      class="absolute inset-0 w-full h-full object-cover object-center"
+      loading="eager"
+      fetchpriority="high"
+    />
+    <!-- Overlay gradient -->
+    <div class="absolute inset-0 bg-linear-to-t from-neutral-800 via-neutral-800/60 to-neutral-800/20"></div>
 
-          <!-- Right: Menu du jour -->
-          <div class="bg-neutral-800 p-8 lg:p-10 text-center">
-            <h3 class="text-red-lcdl text-2xl mb-6">Le menu du jour</h3>
-            <div id="menu-du-jour-wrapper" style="visibility: hidden;">
-              {menusSemaine.map(menu => (
-                <div data-day-index={menu.dayIndex} class="hidden">
-                  <div class="text-neutral-100 font-medium lowercase first-letter:uppercase mb-4">{menu.label}</div>
-                  <p class="text-neutral-300 leading-relaxed">{menu.description}</p>
-                </div>
-              ))}
+    <!-- Content -->
+    <div class="relative z-10 container-default pb-16 lg:pb-24 pt-12">
+      <div class="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-8 lg:gap-12 items-center">
+
+        <!-- Left: Text -->
+        <div>
+          <div class="mb-6">
+            <div class="line-accent _124px white"></div>
+          </div>
+          <h1 class="text-neutral-100 text-[30px] sm:text-[42px] md:text-[52px] leading-tight mb-4">
+            Cuisine et produits locaux, ici le fait-maison a vraiment du goût.
+          </h1>
+          <div class="flex flex-col sm:flex-row sm:items-center gap-4 mb-8">
+            <h2 class="text-neutral-300 text-[16px] sm:text-[18px] font-medium">
+              Restaurant à Saint-Gorgon — Rue de la Croix des Landes, 56350
+            </h2>
+          </div>
+          <div class="flex flex-wrap items-center gap-4">
+            <a href="tel:0299719368" class="btn-primary red-button inline-block">
+              02 99 71 93 68
+            </a>
+            <a href="/#menus" class="btn-secondary border-neutral-100! text-neutral-100! hover:bg-neutral-100! hover:text-neutral-800!">
+              Voir les menus
+            </a>
+          </div>
+          <!-- Rating -->
+          <div class="mt-8 flex items-center gap-4">
+            <div>
+              <div class="text-neutral-100 font-semibold text-base mb-1">Excellent</div>
+              <a href="https://maps.app.goo.gl/jtMJ3LKNJKhHaKpP8" target="_blank" rel="noopener"
+                class="flex items-center gap-2 text-neutral-300 hover:text-neutral-100 transition-colors">
+                <span class="text-yellow-400 text-xl">★★★★★</span>
+                <span class="text-lg font-semibold text-neutral-100">4.7 / 5</span>
+                <span class="text-neutral-500 text-base">· 61 avis Google</span>
+              </a>
             </div>
-            <div class="mt-6">
-              <div id="open-status-menu" class="text-red-lcdl font-semibold text-lg">Horaire à vérifier sur Google</div>
-            </div>
-            <div class="mt-6 text-neutral-400 text-sm leading-relaxed">
-              Vous pouvez déguster également la <strong class="text-neutral-100">pièce de boucher Française</strong>, l'<strong class="text-neutral-100">anguille de Loire</strong> et nos <strong class="text-neutral-100">burgers</strong> et uniquement le weekend nos délicieuses <strong class="text-neutral-100">pizzas</strong>. Tout ça c'est du fait-maison bien sûr !
-            </div>
+            <img src="/images/logo-badge.svg" alt="" class="h-5 opacity-70" loading="lazy" />
           </div>
         </div>
+
+        <!-- Right: Menu du jour -->
+        <div class="bg-neutral-800/80 backdrop-blur-sm border border-neutral-700 p-10 lg:p-14 text-center">
+          <div class="mb-1">
+            <div class="text-sm font-semibold uppercase tracking-widest text-neutral-400 mb-4">Aujourd'hui</div>
+            <h3 class="text-red-lcdl text-3xl font-semibold">Le menu du jour</h3>
+          </div>
+          <div class="w-12 h-px bg-neutral-600 mx-auto my-6"></div>
+          <div id="menu-du-jour-wrapper" style="visibility: hidden;">
+            {menusSemaine.map(menu => (
+              <div data-day-index={menu.dayIndex} class="hidden">
+                <div class="text-neutral-100 font-medium lowercase first-letter:uppercase mb-4 text-lg">{menu.label}</div>
+                <p class="text-neutral-300 leading-relaxed">{menu.description}</p>
+              </div>
+            ))}
+          </div>
+          <div class="mt-6">
+            <div id="open-status-menu" class="text-red-lcdl font-semibold text-lg">Horaire à vérifier sur Google</div>
+          </div>
+          <div class="mt-6 text-neutral-400 text-sm leading-relaxed">
+            Également : <strong class="text-neutral-300">pièce de boucher</strong>, <strong class="text-neutral-300">anguille de Loire</strong>, <strong class="text-neutral-300">burgers</strong> et le weekend nos <strong class="text-neutral-300">pizzas</strong>.
+          </div>
+        </div>
+
       </div>
-
-    </div>
-
-    <!-- Restaurant facade image (full width) -->
-    <div class="mt-10 lg:mt-20">
-      <img
-        src="/images/restaurant-facade.jpg"
-        alt="Façade du restaurant La Croix des Landes"
-        class="w-full max-h-[714px] object-cover"
-        loading="lazy"
-      />
     </div>
   </section>
 
   <!-- DISCOVER MENUS SECTION -->
-  <section id="menus" class="section bg-neutral-800">
+  <section id="menus" class="section pt-16! lg:pt-20! bg-neutral-800">
     <div class="container-default">
       <div class="text-center mb-16">
         <div class="mb-6 flex justify-center">
