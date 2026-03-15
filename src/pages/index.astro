@@ -6,9 +6,58 @@ const menusSemaine = await getMenusSemaine();
 import menuCategories from '../data/menu-categories.json';
 import services from '../data/services.json';
 import reviews from '../data/reviews.json';
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Quels sont les horaires du restaurant La Croix des Landes ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Le restaurant est ouvert du lundi au dimanche de 09h30 à 21h00. Les horaires peuvent varier selon les saisons, consultez notre page Google pour les horaires en temps réel."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Comment réserver une table à La Croix des Landes ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Pour réserver une table, appelez-nous au 02 99 71 93 68 ou envoyez un email à lacroixdeslandes@orange.fr. La réservation est obligatoire pour le menu du chef et le menu à la carte."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Le restaurant propose-t-il des formules traiteur ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Oui, La Croix des Landes propose des prestations traiteur pour vos événements de 10 à 300 personnes : repas de famille, mariages, séminaires d'entreprise. Contactez-nous au 02 99 71 93 68 pour un devis."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Où est situé le restaurant La Croix des Landes ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Le restaurant est situé Rue de la Croix des Landes, 56350 Saint-Gorgon, dans le Morbihan (Bretagne)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quels types de cuisine sont proposés à La Croix des Landes ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nous proposons une cuisine traditionnelle française fait maison avec des produits locaux : menus du jour, menus du chef, menu à la carte, burgers et pizzas. Tous nos plats sont préparés sur place."
+      }
+    }
+  ]
+};
 ---
 
 <Layout title="Restaurant à Saint-Gorgon | La Croix des Landes (Morbihan) – Fait Maison & Produits Locaux">
+  <Fragment slot="head">
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
 
   <!-- HERO SECTION -->
   <section class="relative min-h-[90vh] flex flex-col justify-center overflow-hidden">
@@ -311,39 +360,72 @@ import reviews from '../data/reviews.json';
   <!-- REVIEWS SECTION -->
   <section class="section bg-neutral-200">
     <div class="container-default">
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-        <!-- Title + button -->
+
+      <!-- Header -->
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10">
         <div>
-          <div class="mb-8">
+          <div class="mb-6">
             <div class="line-accent _124px"></div>
           </div>
-          <h2 class="mb-4">Ce que nos clients disent de nous.</h2>
-          <p class="mb-9">N'hésitez pas à nous laisser un petit commentaire sur Goole. Cela nous aide beaucoup. Nous vous en sommes très recoonnaissant.</p>
-          <a href="https://www.google.com/search?q=la+croix+des+landes+saint+gorgon" target="_blank" rel="noopener" class="btn-primary red-button">
-            Accès au formulaire Google
-          </a>
+          <h2 class="mb-0">Ce que nos clients disent de nous.</h2>
+        </div>
+        <a href="https://www.google.com/search?q=la+croix+des+landes+saint+gorgon" target="_blank" rel="noopener" class="btn-primary red-button shrink-0">
+          Laisser un avis
+        </a>
+      </div>
+
+      <!-- Bento grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+
+        <!-- [0] Cathy — col1 row1 -->
+        <div class="card shadow-long p-7 flex flex-col gap-4">
+          <span class="text-yellow-400 text-lg">★★★★★</span>
+          <p class="text-neutral-700 leading-relaxed flex-1">"{reviews[0].text}"</p>
+          <div class="text-neutral-800 font-semibold text-sm">— {reviews[0].author}</div>
         </div>
 
-        <!-- Cathy -->
-        <div class="card shadow-long p-8">
-          <img src="/images/icon-stars.svg" alt="5 étoiles" class="mb-4" loading="lazy" />
-          <p class="mb-6">"{reviews[0].text}"</p>
-          <div class="text-neutral-800 font-medium">{reviews[0].author}</div>
+        <!-- [4] Dorian — col2 row1-2, featured dark card -->
+        <div class="shadow-long p-8 rounded-xl bg-neutral-800 md:row-span-2 flex flex-col gap-6">
+          <span class="text-yellow-400 text-lg">★★★★★</span>
+          <p class="text-neutral-100 text-lg leading-relaxed flex-1">"{reviews[4].text}"</p>
+          <div class="text-neutral-400 font-semibold text-sm">— {reviews[4].author}</div>
         </div>
 
-        <!-- Sylvain + François -->
-        <div class="space-y-6">
-          <div class="card shadow-long p-8">
-            <img src="/images/icon-stars.svg" alt="5 étoiles" class="mb-4" loading="lazy" />
-            <p class="mb-6">"{reviews[1].text}"</p>
-            <div class="text-neutral-800 font-medium">{reviews[1].author}</div>
-          </div>
-          <div class="card shadow-long p-8">
-            <img src="/images/icon-stars.svg" alt="5 étoiles" class="mb-4" loading="lazy" />
-            <p class="mb-6">"{reviews[2].text}"</p>
-            <div class="text-neutral-800 font-medium">{reviews[2].author}</div>
-          </div>
+        <!-- [3] Morgane — col3 row1 -->
+        <div class="card shadow-long p-7 flex flex-col gap-4">
+          <span class="text-yellow-400 text-lg">★★★★★</span>
+          <p class="text-neutral-700 leading-relaxed flex-1">"{reviews[3].text}"</p>
+          <div class="text-neutral-800 font-semibold text-sm">— {reviews[3].author}</div>
         </div>
+
+        <!-- [1] Sylvain — col1 row2 -->
+        <div class="card shadow-long p-7 flex flex-col gap-4">
+          <span class="text-yellow-400 text-lg">★★★★★</span>
+          <p class="text-neutral-700 leading-relaxed flex-1">"{reviews[1].text}"</p>
+          <div class="text-neutral-800 font-semibold text-sm">— {reviews[1].author}</div>
+        </div>
+
+        <!-- [5] Laurence — col3 row2 -->
+        <div class="card shadow-long p-7 flex flex-col gap-4">
+          <span class="text-yellow-400 text-lg">★★★★★</span>
+          <p class="text-neutral-700 leading-relaxed flex-1">"{reviews[5].text}"</p>
+          <div class="text-neutral-800 font-semibold text-sm">— {reviews[5].author}</div>
+        </div>
+
+        <!-- [2] François — col1-2 row3, wide accent -->
+        <div class="card shadow-long p-7 md:col-span-2 flex flex-col gap-4">
+          <span class="text-yellow-400 text-lg">★★★★★</span>
+          <p class="text-neutral-700 leading-relaxed flex-1">"{reviews[2].text}"</p>
+          <div class="text-neutral-800 font-semibold text-sm">— {reviews[2].author}</div>
+        </div>
+
+        <!-- [6] Rob — col3 row3 -->
+        <div class="card shadow-long p-7 flex flex-col gap-4">
+          <span class="text-yellow-400 text-lg">★★★★★</span>
+          <p class="text-neutral-700 leading-relaxed flex-1">"{reviews[6].text}"</p>
+          <div class="text-neutral-800 font-semibold text-sm">— {reviews[6].author}</div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -351,32 +433,59 @@ import reviews from '../data/reviews.json';
   <!-- FACEBOOK SECTION -->
   <section class="section bg-neutral-200">
     <div class="container-default">
-      <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-10 gap-6">
+
+      <!-- Header -->
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10">
         <div>
-          <div class="mb-8">
+          <div class="mb-6">
             <div class="line-accent _124px"></div>
           </div>
           <h2 class="mb-0">Suivez nous sur Facebook</h2>
         </div>
-        <div class="flex flex-wrap gap-4">
-          <a href="https://m.me/100063678783204" target="_blank" rel="noopener" class="btn-primary">💬 Nous écrire sur Messenger</a>
+        <div class="flex flex-wrap gap-4 shrink-0">
+          <a href="https://m.me/100063678783204" target="_blank" rel="noopener" class="btn-primary">💬 Messenger</a>
           <a href="https://www.facebook.com/people/La-croix-des-landes/100063678783204/?locale=fr_FR" target="_blank" rel="noopener" class="btn-primary">Facebook</a>
         </div>
       </div>
 
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <a href="https://www.facebook.com/people/La-croix-des-landes/100063678783204/" target="_blank" rel="noopener" class="overflow-hidden group">
-          <img src="/images/gallery-restaurant.jpeg" alt="Façade du restaurant la croix des landes" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+      <!-- Bento grid photos -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+
+        <!-- col1 row1 -->
+        <a href="https://www.facebook.com/people/La-croix-des-landes/100063678783204/" target="_blank" rel="noopener" class="overflow-hidden rounded-xl aspect-square group">
+          <img src="/images/photos/Amalia_1769958458224.webp" alt="Client La Croix des Landes" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
         </a>
-        <a href="https://www.facebook.com/people/La-croix-des-landes/100063678783204/" target="_blank" rel="noopener" class="overflow-hidden group">
-          <img src="/images/gallery-plat.jpeg" alt="Présentation de repas la croix des landes" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+
+        <!-- col2 row1-2, featured tall -->
+        <a href="https://www.facebook.com/people/La-croix-des-landes/100063678783204/" target="_blank" rel="noopener" class="overflow-hidden rounded-xl md:row-span-2 group">
+          <img src="/images/photos/Jade_1771073800811.webp" alt="Client La Croix des Landes" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
         </a>
-        <a href="https://www.facebook.com/people/La-croix-des-landes/100063678783204/" target="_blank" rel="noopener" class="overflow-hidden group">
-          <img src="/images/gallery-herve.jpeg" alt="Hervé - chef de la croix des landes" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+
+        <!-- col3 row1 -->
+        <a href="https://www.facebook.com/people/La-croix-des-landes/100063678783204/" target="_blank" rel="noopener" class="overflow-hidden rounded-xl aspect-square group">
+          <img src="/images/photos/Lindsay_1770551532528.webp" alt="Client La Croix des Landes" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
         </a>
-        <a href="https://www.facebook.com/people/La-croix-des-landes/100063678783204/" target="_blank" rel="noopener" class="overflow-hidden group">
-          <img src="/images/gallery-aire-jeu.jpeg" alt="Espace enfants la croix des landes" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+
+        <!-- col1 row2 -->
+        <a href="https://www.facebook.com/people/La-croix-des-landes/100063678783204/" target="_blank" rel="noopener" class="overflow-hidden rounded-xl aspect-square group">
+          <img src="/images/photos/Emma_1770470435301.webp" alt="Client La Croix des Landes" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
         </a>
+
+        <!-- col3 row2 -->
+        <a href="https://www.facebook.com/people/La-croix-des-landes/100063678783204/" target="_blank" rel="noopener" class="overflow-hidden rounded-xl aspect-square group">
+          <img src="/images/photos/Jean_1770985934919.webp" alt="Client La Croix des Landes" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+        </a>
+
+        <!-- col1-2 row3, wide -->
+        <a href="https://www.facebook.com/people/La-croix-des-landes/100063678783204/" target="_blank" rel="noopener" class="overflow-hidden rounded-xl md:col-span-2 aspect-video group">
+          <img src="/images/photos/Jerome_1770985995012.webp" alt="Client La Croix des Landes" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+        </a>
+
+        <!-- col3 row3 -->
+        <a href="https://www.facebook.com/people/La-croix-des-landes/100063678783204/" target="_blank" rel="noopener" class="overflow-hidden rounded-xl aspect-square group">
+          <img src="/images/photos/Maxime_1770294935629.webp" alt="Client La Croix des Landes" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+        </a>
+
       </div>
     </div>
   </section>

@@ -12,9 +12,31 @@ interface Props {
 }
 
 const { title, pageTitle, description, price, note, intro, wide = false } = Astro.props;
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Accueil",
+      "item": "https://lacroixdeslandes.fr/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": pageTitle,
+      "item": `https://lacroixdeslandes.fr${Astro.url.pathname}`
+    }
+  ]
+};
 ---
 
 <Layout title={`${pageTitle} | La Croix des Landes`} description={description}>
+  <Fragment slot="head">
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  </Fragment>
   <!-- Dark hero banner -->
   <section class="bg-neutral-800 py-12 sm:py-20 lg:py-28">
     <div class="container-default text-center">

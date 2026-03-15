@@ -18,7 +18,14 @@
       "Bash(curl -sL \"https://cdn.prod.website-files.com/65a66d18d740f6ccfb7f293b/676aaf2251b29de7537e4431_burger7.webp\" -o burger-sen-koko.webp)",
       "Bash(curl -sL \"https://cdn.prod.website-files.com/65a66d18d740f6ccfb7f293b/676aaf4eec7908e84e41e4cb_burger8.webp\" -o burger-ptit-gorgonais.webp)",
       "Bash(curl -sL \"https://cdn.prod.website-files.com/65a66d18d740f6ccfb7f293b/676aaf90d1e1ccd8b6733057_burger9.webp\" -o burger-crispy.webp)",
-      "Bash(ls -la burger-*.webp)"
+      "Bash(ls -la burger-*.webp)",
+      "Bash(sips -g pixelWidth /Users/maxence/works/lacroixdeslandes/public/images/photos/Amalia_1769958458224.jpg)",
+      "Bash(sips -z 1512 2016 /Users/maxence/works/lacroixdeslandes/public/images/photos/Amalia_1769958458224.jpg -s format webp --out /Users/maxence/works/lacroixdeslandes/public/images/photos/Amalia_1769958458224.webp)",
+      "Bash(node -e \"require\\(''''sharp''''\\)\")",
+      "Bash(brew list:*)",
+      "Bash(ffmpeg -i /Users/maxence/works/lacroixdeslandes/public/images/photos/Amalia_1769958458224.jpg -vf \"scale=iw/2:ih/2\" -quality 80 /tmp/test.webp -y)",
+      "Bash(ffmpeg -encoders)",
+      "Bash(brew install:*)"
     ],
     "additionalDirectories": [
       "/Users/maxence/works/lacroixdeslandes/public",
