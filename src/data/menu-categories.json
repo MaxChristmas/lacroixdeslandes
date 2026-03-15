@@ -2,28 +2,28 @@
   {
     "title": "Menus du jour",
     "description": "Retrouver chaque semaine nos menus de la semaine.",
-    "image": "/images/menu-du-jour.jpg",
+    "image": "/images/menu-du-jour.webp",
     "href": "/menus/menus-de-la-semaine",
     "linkText": "Voir le menu"
   },
   {
     "title": "Burgers",
     "description": "Venez découvrir nos burgers.",
-    "image": "/images/burgers.jpg",
+    "image": "/images/burgers.webp",
     "href": "/menus/burgers",
     "linkText": "Voir les burgers"
   },
   {
     "title": "Menus du Chef",
     "description": "Uniquement sur réservation",
-    "image": "/images/menu-chef.jpg",
+    "image": "/images/menu-chef.webp",
     "href": "/menus/menus-du-chef",
     "linkText": "Voir le menu"
   },
   {
     "title": "Menus à la Carte",
     "description": "Uniquement sur réservation",
-    "image": "/images/menu-carte.jpg",
+    "image": "/images/menu-carte.webp",
     "href": "/menus/menus-a-la-carte",
     "linkText": "Voir le menu"
   },
