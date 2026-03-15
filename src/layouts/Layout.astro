@@ -42,13 +42,9 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://lacroixdeslandes.fr');
     <link rel="apple-touch-icon" href="/images/webclip.svg" />
     <link rel="canonical" href={canonicalURL.href} />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-
     <slot name="head" />
 
-    <script type="application/ld+json" set:html={JSON.stringify({
+    <script is:inline type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Restaurant",
       "name": "La Croix des Landes",
@@ -143,7 +139,7 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://lacroixdeslandes.fr');
     })} />
 
     <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BL14G053VR"></script>
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-BL14G053VR"></script>
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}

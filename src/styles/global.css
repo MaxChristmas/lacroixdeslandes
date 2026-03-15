@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "@fontsource-variable/dm-sans";
 
 @theme {
   --color-neutral-100: #ffffff;

@@ -25,7 +25,8 @@
       "Bash(brew list:*)",
       "Bash(ffmpeg -i /Users/maxence/works/lacroixdeslandes/public/images/photos/Amalia_1769958458224.jpg -vf \"scale=iw/2:ih/2\" -quality 80 /tmp/test.webp -y)",
       "Bash(ffmpeg -encoders)",
-      "Bash(brew install:*)"
+      "Bash(brew install:*)",
+      "Bash(npm install:*)"
     ],
     "additionalDirectories": [
       "/Users/maxence/works/lacroixdeslandes/public",
