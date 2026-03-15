@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lacroixdeslandes.fr/sitemap-index.xml

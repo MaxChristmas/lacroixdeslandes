@@ -15,7 +15,7 @@ const {
   ogImage = "/images/og-image.jpg"
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, 'https://www.lacroixdeslandes.fr');
+const canonicalURL = new URL(Astro.url.pathname, 'https://lacroixdeslandes.fr');
 ---
 
 <!DOCTYPE html>
@@ -32,11 +32,11 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://www.lacroixdeslandes.f
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={new URL(ogImage, 'https://www.lacroixdeslandes.fr').href} />
+    <meta property="og:image" content={new URL(ogImage, 'https://lacroixdeslandes.fr').href} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={new URL(ogImage, 'https://www.lacroixdeslandes.fr').href} />
+    <meta property="twitter:image" content={new URL(ogImage, 'https://lacroixdeslandes.fr').href} />
 
     <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
     <link rel="apple-touch-icon" href="/images/webclip.svg" />
@@ -57,11 +57,59 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://www.lacroixdeslandes.f
         "postalCode": "56350",
         "addressCountry": "FR"
       },
-      "telephone": "02 99 71 93 68",
-      "servesCuisine": ["Française", "Burgers", "Pizzas"],
+      "url": "https://lacroixdeslandes.fr/",
+      "logo": "https://lacroixdeslandes.fr/images/logo.png",
+      "image": "https://lacroixdeslandes.fr/images/restaurant-facade.jpg",
+      "description": "Restaurant traditionnel à Saint-Gorgon (Morbihan). Cuisine fait maison, produits locaux, menus du jour, burgers, pizzas & options traiteur.",
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 47.6897,
+        "longitude": -2.2014
+      },
+      "telephone": "+33299719368",
+      "email": "lacroixdeslandes@orange.fr",
+      "servesCuisine": ["Cuisine française traditionnelle", "Burgers", "Pizzas", "Traiteur"],
       "priceRange": "€€",
-      "url": "https://www.lacroixdeslandes.fr/",
-      "openingHours": "Mo–Su 09:30–21:00"
+      "currenciesAccepted": "EUR",
+      "paymentAccepted": "Cash, Credit Card",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          "opens": "09:30",
+          "closes": "21:00"
+        }
+      ],
+      "hasMenu": "https://lacroixdeslandes.fr/menus/menus-a-la-carte",
+      "sameAs": [
+        "https://www.facebook.com/people/La-croix-des-landes/100063678783204/"
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.7",
+        "reviewCount": "61",
+        "bestRating": "5"
+      },
+      "review": [
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Cathy" },
+          "reviewBody": "Très bon accueil. très bonne cuisine agréablement surpris, excellent.",
+          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }
+        },
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Sylvain" },
+          "reviewBody": "Excellent restaurant ouvrier ! Rapport qualité prix au rendez-vous!",
+          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }
+        },
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "François" },
+          "reviewBody": "Charmant petit restaurant de village. rapport qualité prix imbattable. Service rapide avec le sourire. Grand choix d'entrées et de desserts.",
+          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }
+        }
+      ]
     })} />
 
     <!-- Google Analytics -->
