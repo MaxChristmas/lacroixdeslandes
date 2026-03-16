@@ -1,4 +1,6 @@
 ---
+import openingHours from '../data/openning-hours.json';
+
 const menuLinks = [
   { label: "Menus du Jour", href: "/menus/menus-de-la-semaine" },
   { label: "Menus du chef", href: "/menus/menus-du-chef" },
@@ -7,106 +9,193 @@ const menuLinks = [
   { label: "Burgers", href: "/menus/burgers" },
   { label: "Traiteur", href: "/menus/menus-traiteur" },
 ];
+
+const dayFR: Record<string, string> = {
+  Monday: 'Lundi', Tuesday: 'Mardi', Wednesday: 'Mercredi',
+  Thursday: 'Jeudi', Friday: 'Vendredi', Saturday: 'Samedi', Sunday: 'Dimanche'
+};
+
+function convertTime(t: string): string {
+  const match = t.trim().match(/^(\d+):(\d+)\s*(AM|PM)$/i);
+  if (!match) return t;
+  let h = parseInt(match[1]);
+  const m = match[2];
+  const period = match[3].toUpperCase();
+  if (period === 'PM' && h !== 12) h += 12;
+  if (period === 'AM' && h === 12) h = 0;
+  return `${h}h${m === '00' ? '' : m}`;
+}
+
+type HourEntry = { day: string; hours: string; closed: boolean };
+
+const weeklyHours: HourEntry[] = (openingHours?.currentOpeningHours?.weekdayDescriptions ?? [])
+  .map((desc: string): HourEntry => {
+    const colonIdx = desc.indexOf(':');
+    if (colonIdx === -1) return { day: desc, hours: '', closed: false };
+    const dayEn = desc.slice(0, colonIdx).trim();
+    const rest = desc.slice(colonIdx + 1).trim();
+    const dayFrench = dayFR[dayEn] ?? dayEn;
+    if (rest === 'Closed' || rest === 'Fermé') return { day: dayFrench, hours: 'Fermé', closed: true };
+    const parts = rest.split('–').map(s => s.trim());
+    if (parts.length === 2) return { day: dayFrench, hours: `${convertTime(parts[0])} – ${convertTime(parts[1])}`, closed: false };
+    return { day: dayFrench, hours: rest, closed: false };
+  });
+
+const currentYear = new Date().getFullYear();
 ---
 
-<footer class="border-t border-neutral-300 overflow-hidden">
+<footer aria-label="Pied de page" class="bg-neutral-800 text-neutral-300">
   <div class="container-default">
-    <!-- Footer Top: Logo -->
-    <div class="border-b border-neutral-300 py-10 lg:py-20">
-      <a href="/">
-        <img src="/images/logo.webp" alt="La Croix des Landes" loading="lazy" class="max-w-[200px]" />
-      </a>
-    </div>
 
-    <!-- Footer Middle -->
-    <div class="py-12 lg:py-30">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-        <!-- Left: Menus + Badge -->
-        <div class="flex flex-wrap gap-10">
-          <!-- Menu links -->
-          <div>
-            <div class="mb-10">
-              <span class="text-200 uppercase tracking-wider font-medium text-neutral-800">Menus</span>
-            </div>
+    <!-- Main grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16 py-16 lg:py-24">
+
+      <!-- Col 1 : Identité + description SEO + notation -->
+      <div>
+        <a href="/" class="inline-block mb-8 transition-opacity hover:opacity-80">
+          <img
+            src="/images/logo.webp"
+            alt="La Croix des Landes — Restaurant à Saint-Gorgon"
+            width="160"
+            height="70"
+            loading="lazy"
+            class="brightness-0 invert"
+          />
+        </a>
+
+        <p class="text-neutral-400 text-sm leading-relaxed mb-8">
+          Restaurant traditionnel familial à Saint-Gorgon (Morbihan), entre Allaire et Malansac,
+          à 15 min de Questembert et 20 min de Redon. Cuisine française fait maison, produits frais
+          et locaux : menus du jour, burgers, pizzas et formules traiteur pour vos événements.
+        </p>
+
+        <!-- Notation Google -->
+        <a
+          href="https://maps.app.goo.gl/jtMJ3LKNJKhHaKpP8"
+          target="_blank"
+          rel="noopener"
+          aria-label="Voir les avis Google — 4,7 sur 5"
+          class="inline-flex items-center gap-2 group mb-8"
+        >
+          <span class="text-yellow-400 text-base" aria-hidden="true">★★★★★</span>
+          <span class="text-neutral-100 font-semibold text-sm">4.7 / 5</span>
+          <span class="text-neutral-500 text-xs">· 61 avis Google</span>
+        </a>
+
+        <!-- Réseaux sociaux -->
+        <div class="flex items-center gap-3">
+          <a
+            href="https://www.facebook.com/people/La-croix-des-landes/100063678783204/"
+            target="_blank"
+            rel="noopener"
+            aria-label="Suivez-nous sur Facebook"
+            class="w-9 h-9 flex items-center justify-center border border-neutral-600 text-neutral-400 hover:text-neutral-100 hover:border-neutral-400 transition-colors"
+          >
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+            </svg>
+          </a>
+          <a
+            href="https://m.me/100063678783204"
+            target="_blank"
+            rel="noopener"
+            aria-label="Contactez-nous sur Messenger"
+            class="w-9 h-9 flex items-center justify-center border border-neutral-600 text-neutral-400 hover:text-neutral-100 hover:border-neutral-400 transition-colors"
+          >
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 2C6.477 2 2 6.145 2 11.243c0 2.906 1.318 5.497 3.397 7.274V22l3.105-1.695c.83.226 1.71.348 2.498.348 5.523 0 10-4.145 10-9.243S17.523 2 12 2zm1.009 12.435l-2.543-2.694-4.963 2.694 5.456-5.785 2.604 2.694 4.902-2.694-5.456 5.785z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Col 2 : Navigation + Horaires -->
+      <div class="flex flex-col gap-12">
+
+        <!-- Navigation -->
+        <div>
+          <h2 class="text-xs uppercase tracking-widest font-semibold text-neutral-500 mb-6">Nos menus</h2>
+          <nav aria-label="Navigation secondaire — menus">
             <ul class="space-y-3">
               {menuLinks.map(link => (
                 <li>
-                  <a href={link.href} class="text-100 uppercase tracking-wider hover:text-neutral-800 transition-colors">
+                  <a
+                    href={link.href}
+                    class="text-sm text-neutral-400 hover:text-neutral-100 transition-colors uppercase tracking-wider"
+                  >
                     {link.label}
                   </a>
                 </li>
               ))}
             </ul>
-          </div>
-
-          <!-- Badge + Google Rating -->
-          <div class="flex flex-col items-center gap-4">
-            <div class="flex flex-col items-center">
-              <span class="text-neutral-800 font-medium">Excellent</span>
-              <a href="https://www.google.com/maps/place/La+Croix+des+Landes" target="_blank" rel="noopener" class="hover:opacity-70 transition-opacity">
-                ⭐ 4.7 / 5
-              </a>
-              <span class="text-sm text-neutral-500">basé sur 61 avis</span>
-              <img src="/images/logo-badge.svg" alt="" class="h-5 mt-2" loading="lazy" />
-            </div>
-          </div>
+          </nav>
         </div>
 
-        <!-- Right: Contact card -->
-        <div class="bg-neutral-800 text-neutral-300 p-6 sm:p-10 lg:p-12">
-          <div class="mb-6">
-            <span class="text-200 uppercase tracking-wider font-medium text-neutral-100">Nous joindre</span>
+        <!-- Horaires -->
+        {weeklyHours.length > 0 && (
+          <div>
+            <h2 class="text-xs uppercase tracking-widest font-semibold text-neutral-500 mb-6">Horaires</h2>
+            <ul class="space-y-2">
+              {weeklyHours.map(entry => (
+                <li class="flex justify-between gap-4 text-sm">
+                  <span class={entry.closed ? 'text-neutral-600' : 'text-neutral-400'}>{entry.day}</span>
+                  <span class={entry.closed ? 'text-neutral-600' : 'text-neutral-300'}>{entry.hours}</span>
+                </li>
+              ))}
+            </ul>
+            <p class="mt-4 text-xs text-neutral-600 leading-relaxed">
+              Horaires susceptibles de varier. Consultez Google pour les jours fériés.
+            </p>
           </div>
-          <div class="space-y-4 mb-8">
-            <div class="flex flex-wrap justify-between gap-2">
-              <span class="text-200 font-medium text-neutral-100">Téléphone:</span>
-              <a href="tel:0299719368" class="text-neutral-300 hover:text-neutral-100 transition-colors tracking-wider uppercase">
-                02 99 71 93 68
-              </a>
-            </div>
-            <div class="flex flex-wrap justify-between gap-2">
-              <span class="text-200 font-medium text-neutral-100">Email:</span>
-              <span class="text-neutral-300 tracking-wider uppercase">lacroixdeslandes@orange.fr</span>
-            </div>
-          </div>
+        )}
+      </div>
 
-          <div class="border-t border-neutral-600 my-8"></div>
+      <!-- Col 3 : Contact + Carte -->
+      <div>
+        <h2 class="text-xs uppercase tracking-widest font-semibold text-neutral-500 mb-6">Nous joindre</h2>
 
-          <div id="location-and-map" class="mb-6">
-            <div class="mb-7">
-              <span class="text-200 uppercase tracking-wider font-medium text-neutral-100">Localisation</span>
-            </div>
-            <div class="space-y-1 text-neutral-300">
-              <div>Rue de La Croix des Landes</div>
-              <div>56350 Saint Gorgon</div>
-            </div>
+        <address class="not-italic space-y-4 mb-8 text-sm">
+          <div class="flex justify-between gap-4">
+            <span class="text-neutral-500 shrink-0">Téléphone</span>
+            <a href="tel:0299719368" class="text-neutral-300 hover:text-neutral-100 transition-colors tracking-wider">
+              02 99 71 93 68
+            </a>
           </div>
+          <div class="flex justify-between gap-4">
+            <span class="text-neutral-500 shrink-0">Email</span>
+            <a href="mailto:lacroixdeslandes@orange.fr" class="text-neutral-300 hover:text-neutral-100 transition-colors break-all">
+              lacroixdeslandes@orange.fr
+            </a>
+          </div>
+          <div class="flex justify-between gap-4">
+            <span class="text-neutral-500 shrink-0">Adresse</span>
+            <span class="text-neutral-300 text-right">
+              Rue de la Croix des Landes<br />
+              56350 Saint-Gorgon
+            </span>
+          </div>
+        </address>
 
-          <div class="mt-6 rounded-xl overflow-hidden">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d64273.3338694949!2d-2.235075744129218!3d47.699470831436!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x480f91be20437bbb%3A0x2bea104ac4c8804!2sLa%20croix%20des%20landes!5e0!3m2!1sfr!2sfr!4v1768918639934!5m2!1sfr!2sfr"
-              width="100%"
-              height="280"
-              style="border:0; border-radius:12px;"
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-            ></iframe>
-          </div>
-
-          <div class="mt-6 text-sm text-neutral-400 leading-relaxed">
-            <strong class="text-neutral-300">La Croix des Landes est un restaurant familial situé à Saint-Gorgon (Morbihan) entre Allaire et Malansac, à 15 min de Questembert et 20 min de Redon. Nous proposons une cuisine française traditionnelle, élaborée à partir de produits frais et locaux, avec des menus du jour variés chaque semaine, des burgers maison, des pizzas artisanales et des formules traiteur pour vos événements.</strong>
-            <br /><br />
-            <strong class="text-neutral-300">Notre équipe vous accueille du lundi au dimanche avec une ambiance chaleureuse.</strong>
-          </div>
+        <div id="location-and-map">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d64273.3338694949!2d-2.235075744129218!3d47.699470831436!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x480f91be20437bbb%3A0x2bea104ac4c8804!2sLa%20croix%20des%20landes!5e0!3m2!1sfr!2sfr!4v1768918639934!5m2!1sfr!2sfr"
+            width="100%"
+            height="220"
+            title="Carte Google Maps — La Croix des Landes, Saint-Gorgon"
+            style="border:0;"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
         </div>
       </div>
+
     </div>
 
-    <!-- Footer Bottom -->
-    <div class="border-t border-neutral-300 py-8 text-center">
-      <p class="text-neutral-500 text-sm">
-        Copyright 2024 © La Croix Des Landes - Fait par <a href="https://www.maxencenoel.fr" class="hover:text-neutral-800 transition-colors">maxencenoel.fr</a>
-      </p>
+    <!-- Bottom bar -->
+    <div class="border-t border-neutral-700 py-6 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-neutral-600">
+      <p>© {currentYear} La Croix des Landes — Saint-Gorgon, Morbihan</p>
+      <p>Site réalisé par <a href="https://www.maxencenoel.fr" target="_blank" rel="noopener" class="hover:text-neutral-400 transition-colors">maxencenoel.fr</a></p>
     </div>
+
   </div>
 </footer>
