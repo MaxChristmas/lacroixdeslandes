@@ -33,5 +33,12 @@
     "image": "/images/pizzas.webp",
     "href": "/menus/pizzas",
     "linkText": "Voir les pizzas"
+  },
+  {
+    "title": "Menu Traiteur",
+    "description": "Pour vos repas de famille, mariages et événements de 10 à 300 convives.",
+    "image": "/images/traiteur.webp",
+    "href": "/menus/menus-traiteur",
+    "linkText": "Voir le menu traiteur"
   }
 ]

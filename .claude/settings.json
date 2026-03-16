@@ -29,7 +29,15 @@
       "Bash(npm install:*)",
       "Bash(sed -i '' 's|/images/restaurant-facade\\\\.jpg|/images/restaurant-facade.webp|g; s|/images/traiteur\\\\.jpg|/images/traiteur.webp|g; s|/images/team\\\\.jpeg|/images/team.webp|g' /Users/maxence/works/lacroixdeslandes/src/pages/index.astro)",
       "Bash(__NEW_LINE_34327b964fe3e7da__ sed:*)",
-      "Bash(__NEW_LINE_34327b964fe3e7da__ echo:*)"
+      "Bash(__NEW_LINE_34327b964fe3e7da__ echo:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(for f:*)",
+      "Bash(do echo:*)",
+      "Bash(sips -g pixelWidth -g pixelHeight $f)",
+      "Read(//Users/maxence/works/lacroixdeslandes/**)",
+      "Bash(done)"
     ],
     "additionalDirectories": [
       "/Users/maxence/works/lacroixdeslandes/public",

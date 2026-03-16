@@ -30,6 +30,9 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://lacroixdeslandes.fr');
     <meta name="description" content={description} />
 
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL.href} />
+    <meta property="og:site_name" content="La Croix des Landes" />
+    <meta property="og:locale" content="fr_FR" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={new URL(ogImage, 'https://lacroixdeslandes.fr').href} />
@@ -78,32 +81,35 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://lacroixdeslandes.fr');
           "closes": "21:00"
         }
       ],
-      "hasMenu": "https://lacroixdeslandes.fr/menus/menus-a-la-carte",
+      "hasMenu": "https://lacroixdeslandes.fr/menus/menus-a-la-carte/",
       "sameAs": [
         "https://www.facebook.com/people/La-croix-des-landes/100063678783204/"
       ],
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "4.7",
-        "reviewCount": "61",
+        "reviewCount": 61,
         "bestRating": "5"
       },
       "review": [
         {
           "@type": "Review",
           "author": { "@type": "Person", "name": "Cathy" },
+          "datePublished": "2025-07-01",
           "reviewBody": "Très bon accueil. très bonne cuisine agréablement surpris, excellent.",
           "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }
         },
         {
           "@type": "Review",
           "author": { "@type": "Person", "name": "Sylvain" },
+          "datePublished": "2025-08-01",
           "reviewBody": "Excellent restaurant ouvrier ! Rapport qualité prix au rendez-vous!",
           "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }
         },
         {
           "@type": "Review",
           "author": { "@type": "Person", "name": "François" },
+          "datePublished": "2025-09-01",
           "reviewBody": "Charmant petit restaurant de village. rapport qualité prix imbattable. Service rapide avec le sourire. Grand choix d'entrées et de desserts.",
           "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }
         },
