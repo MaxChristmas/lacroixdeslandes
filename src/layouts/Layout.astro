@@ -16,7 +16,8 @@ const {
   ogImage = "/images/og-image.jpg"
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, 'https://lacroixdeslandes.fr');
+const pathname = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
+const canonicalURL = new URL(pathname, 'https://lacroixdeslandes.fr');
 ---
 
 <!DOCTYPE html>
