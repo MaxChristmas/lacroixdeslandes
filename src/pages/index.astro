@@ -91,31 +91,27 @@ const faqSchema = {
             </p>
             <OpenStatusBadge variant="dark" />
           </div>
-          <div class="flex flex-wrap items-center gap-4">
-            <a href="tel:0299719368" class="btn-primary red-button inline-block">
+          <div class="flex flex-col sm:flex-row items-center gap-4">
+            <a href="tel:0299719368" class="btn-primary red-button w-full sm:w-auto text-center">
               02 99 71 93 68
             </a>
-            <a href="/#menus" class="btn-secondary border-neutral-100! text-neutral-100! hover:bg-neutral-100! hover:text-neutral-800!">
+            <a href="/#menus" class="btn-secondary w-full sm:w-auto text-center border-neutral-100! text-neutral-100! hover:bg-neutral-100! hover:text-neutral-800!">
               Voir les menus
             </a>
           </div>
           <!-- Rating -->
-          <div class="mt-8 flex items-center gap-4">
-            <div>
-              <div class="text-neutral-100 font-semibold text-base mb-1">Excellent</div>
-              <a href="https://maps.app.goo.gl/jtMJ3LKNJKhHaKpP8" target="_blank" rel="noopener"
-                class="flex items-center gap-2 text-neutral-300 hover:text-neutral-100 transition-colors">
-                <span class="text-yellow-400 text-xl">★★★★★</span>
-                <span class="text-lg font-semibold text-neutral-100">4.7 / 5</span>
-                <span class="text-neutral-500 text-base">· 61 avis Google</span>
-              </a>
-            </div>
-            <img src="/images/logo-badge.svg" alt="" class="h-5 opacity-70" loading="lazy" />
+          <div class="mt-8">
+            <a href="https://maps.app.goo.gl/jtMJ3LKNJKhHaKpP8" target="_blank" rel="noopener"
+              class="flex items-center gap-2 hover:opacity-80 transition-opacity">
+              <span class="text-yellow-400 text-xl">★★★★★</span>
+              <span class="text-neutral-100 font-semibold">4.7 / 5</span>
+              <span class="hidden sm:inline text-neutral-500 text-sm">· 61 avis Google</span>
+            </a>
           </div>
         </div>
 
         <!-- Right: Menu du jour -->
-        <div class="bg-neutral-900/60 backdrop-blur-md border border-neutral-600/50 p-10 lg:p-14 text-center">
+        <div class="bg-neutral-900/60 backdrop-blur-md border border-neutral-600/50 p-6 sm:p-10 lg:p-14 text-center">
           <div class="mb-1">
             <div class="text-sm font-semibold uppercase tracking-widest text-neutral-400 mb-4">Aujourd'hui</div>
             <h3 class="text-red-lcdl text-3xl font-semibold">Le menu du jour</h3>
@@ -259,9 +255,9 @@ const faqSchema = {
                       <span class="link-text text-sm">02 99 71 93 68</span>
                     </a>
                   </div>
-                  <div class="flex flex-wrap justify-between items-center gap-2">
+                  <div class="flex flex-col gap-1">
                     <span class="text-200 font-medium text-neutral-800">Email:</span>
-                    <span class="link-text text-sm">lacroixdeslandes@orange.fr</span>
+                    <a href="mailto:lacroixdeslandes@orange.fr" class="link-text text-sm break-all">lacroixdeslandes@orange.fr</a>
                   </div>
                 </div>
               </div>
@@ -314,12 +310,12 @@ const faqSchema = {
         <p class="max-w-[480px]">Tous ses services sont disponibles sur place et pendant les heures d'ouvertures du restaurant.</p>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
         {services.map(service => (
-          <div class="card p-8">
-            <img src={service.icon} alt={service.alt} class="mb-4 h-12" loading="lazy" />
-            <h3 class="text-xl mb-2">{service.title}</h3>
-            <p class="text-neutral-600">{service.description}</p>
+          <div class="card p-4 sm:p-8">
+            <img src={service.icon} alt={service.alt} class="mb-3 h-8 sm:h-12" loading="lazy" />
+            <h3 class="text-base sm:text-xl mb-1 sm:mb-2">{service.title}</h3>
+            <p class="text-neutral-600 text-sm sm:text-base">{service.description}</p>
           </div>
         ))}
       </div>
