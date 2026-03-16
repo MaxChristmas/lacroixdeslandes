@@ -1,1 +1,171 @@
-{object}
+{
+  "currentOpeningHours": {
+    "openNow": false,
+    "periods": [
+      {
+        "open": {
+          "day": 0,
+          "hour": 9,
+          "minute": 30,
+          "date": {
+            "year": 2026,
+            "month": 3,
+            "day": 22
+          }
+        },
+        "close": {
+          "day": 0,
+          "hour": 21,
+          "minute": 0,
+          "date": {
+            "year": 2026,
+            "month": 3,
+            "day": 22
+          }
+        }
+      },
+      {
+        "open": {
+          "day": 1,
+          "hour": 11,
+          "minute": 0,
+          "date": {
+            "year": 2026,
+            "month": 3,
+            "day": 16
+          }
+        },
+        "close": {
+          "day": 1,
+          "hour": 16,
+          "minute": 0,
+          "date": {
+            "year": 2026,
+            "month": 3,
+            "day": 16
+          }
+        }
+      },
+      {
+        "open": {
+          "day": 2,
+          "hour": 9,
+          "minute": 30,
+          "date": {
+            "year": 2026,
+            "month": 3,
+            "day": 17
+          }
+        },
+        "close": {
+          "day": 2,
+          "hour": 16,
+          "minute": 0,
+          "date": {
+            "year": 2026,
+            "month": 3,
+            "day": 17
+          }
+        }
+      },
+      {
+        "open": {
+          "day": 3,
+          "hour": 9,
+          "minute": 30,
+          "date": {
+            "year": 2026,
+            "month": 3,
+            "day": 18
+          }
+        },
+        "close": {
+          "day": 3,
+          "hour": 16,
+          "minute": 0,
+          "date": {
+            "year": 2026,
+            "month": 3,
+            "day": 18
+          }
+        }
+      },
+      {
+        "open": {
+          "day": 4,
+          "hour": 9,
+          "minute": 0,
+          "date": {
+            "year": 2026,
+            "month": 3,
+            "day": 19
+          }
+        },
+        "close": {
+          "day": 4,
+          "hour": 17,
+          "minute": 0,
+          "date": {
+            "year": 2026,
+            "month": 3,
+            "day": 19
+          }
+        }
+      },
+      {
+        "open": {
+          "day": 5,
+          "hour": 9,
+          "minute": 30,
+          "date": {
+            "year": 2026,
+            "month": 3,
+            "day": 20
+          }
+        },
+        "close": {
+          "day": 5,
+          "hour": 21,
+          "minute": 0,
+          "date": {
+            "year": 2026,
+            "month": 3,
+            "day": 20
+          }
+        }
+      },
+      {
+        "open": {
+          "day": 6,
+          "hour": 9,
+          "minute": 30,
+          "date": {
+            "year": 2026,
+            "month": 3,
+            "day": 21
+          }
+        },
+        "close": {
+          "day": 6,
+          "hour": 21,
+          "minute": 0,
+          "date": {
+            "year": 2026,
+            "month": 3,
+            "day": 21
+          }
+        }
+      }
+    ],
+    "weekdayDescriptions": [
+      "Monday: 11:00 AM – 4:00 PM",
+      "Tuesday: 9:30 AM – 4:00 PM",
+      "Wednesday: 9:30 AM – 4:00 PM",
+      "Thursday: 9:00 AM – 5:00 PM",
+      "Friday: 9:30 AM – 9:00 PM",
+      "Saturday: 9:30 AM – 9:00 PM",
+      "Sunday: 9:30 AM – 9:00 PM"
+    ],
+    "nextOpenTime": "2026-03-16T10:00:00Z"
+  }
+}
