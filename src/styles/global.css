@@ -1,5 +1,10 @@
 @import "tailwindcss";
-@import "@fontsource-variable/dm-sans";
+@import "@fontsource-variable/dm-sans/index.css";
+
+@font-face {
+  font-family: "DM Sans";
+  font-display: swap;
+}
 
 @theme {
   --color-neutral-100: #ffffff;

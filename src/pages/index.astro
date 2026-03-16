@@ -228,11 +228,11 @@ const imageSchema = [
           class="hidden lg:flex absolute -left-16 top-1/2 -translate-y-1/2 z-10 w-12 h-12 items-center justify-center border border-neutral-400 text-neutral-100 hover:bg-neutral-100 hover:text-neutral-800 transition-colors"
           aria-label="Précédent"
         >
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
         </button>
 
         <!-- Slides -->
-        <div id="carousel-track" class="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-hide">
+        <div id="carousel-track" class="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-hide min-h-95">
           {menuCategories.map(cat => (
             <a href={cat.href} class="group flex-shrink-0 w-[85%] sm:w-[45%] lg:w-[calc(50%-12px)] flex flex-col bg-neutral-100 overflow-hidden transition-transform hover:scale-[0.98] snap-start">
               <div class="aspect-[16/10] overflow-hidden">
@@ -258,7 +258,7 @@ const imageSchema = [
           class="hidden lg:flex absolute -right-16 top-1/2 -translate-y-1/2 z-10 w-12 h-12 items-center justify-center border border-neutral-400 text-neutral-100 hover:bg-neutral-100 hover:text-neutral-800 transition-colors"
           aria-label="Suivant"
         >
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
         </button>
       </div>
 
