@@ -13,6 +13,27 @@ const pizzas = [
   { name: "La Spéciale VV", price: "15,80€", desc: "Pâte maison, sauce tomate maison, magret de canard, chèvre, pommes bio, miel, mozzarella, champignons.", image: "/images/pizza-speciale-vv.webp" },
   { name: "La Pizza de votre choix", price: "14,80€", desc: "Pâte maison, sauce tomate maison + 4 ingrédients au choix.", image: "/images/pizza-vegetarienne.webp" },
 ];
+
+const menuItemsSchema = {
+  "@context": "https://schema.org",
+  "@type": "Menu",
+  "name": "Carte des Pizzas",
+  "hasMenuSection": {
+    "@type": "MenuSection",
+    "name": "Pizzas",
+    "hasMenuItem": pizzas.map(pizza => ({
+      "@type": "MenuItem",
+      "name": pizza.name,
+      "description": pizza.desc,
+      "image": `https://lacroixdeslandes.fr${pizza.image}`,
+      "offers": {
+        "@type": "Offer",
+        "price": pizza.price.replace('€', '').replace(',', '.').replace(' ', '').trim(),
+        "priceCurrency": "EUR"
+      }
+    }))
+  }
+};
 ---
 
 <MenuLayout
@@ -22,18 +43,40 @@ const pizzas = [
   intro="Toutes nos pizzas sont conçues à base de pâte maison bio et également garnies de produits locaux issus d'agriculture biologique."
   wide
 >
+  <Fragment slot="head">
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(menuItemsSchema)} />
+  </Fragment>
+
+  <section class="mb-12 text-neutral-700 text-base leading-relaxed max-w-3xl mx-auto">
+    <h2 class="text-2xl mb-4">Des pizzas maison à base de produits bio et locaux</h2>
+    <p class="mb-4">Nos pizzas sont préparées avec une <strong>pâte maison à base de farine bio</strong> et une sauce tomate élaborée dans nos cuisines. Chaque garniture est choisie pour sa qualité et sa fraîcheur, en privilégiant les <strong>produits locaux et issus de l'agriculture biologique</strong> du Morbihan.</p>
+    <p>De la P'tite Filou pour les enfants à la Spéciale VV au magret de canard et chèvre, notre carte de 10 pizzas propose un large choix pour tous les goûts. Retrouvez des classiques comme La Calzone ou La Végétarienne, et des créations originales comme La Normande au camembert et pommes bio. Toutes nos pizzas sont disponibles <strong>sur place ou à emporter</strong>, les vendredis, samedis et dimanches.</p>
+  </section>
+
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-    {pizzas.map(pizza => (
-      <div class="card overflow-hidden text-center">
-        <img src={pizza.image} alt={pizza.name} class="w-full h-56 object-cover" loading="lazy" />
-        <div class="p-6">
-          <div class="text-neutral-800 font-semibold text-lg mb-1">{pizza.price}</div>
-          <h3 class="text-xl mb-1">{pizza.name}</h3>
-          {pizza.subtitle && <div class="text-neutral-500 text-sm uppercase mb-2">{pizza.subtitle}</div>}
-          <p class="text-neutral-600 text-sm leading-relaxed">{pizza.desc}</p>
-          <hr class="border-neutral-300 mt-6 mx-auto w-16" />
+    {pizzas.map(pizza => {
+      const src512 = pizza.image.replace('.webp', '-512w.webp');
+      return (
+        <div class="card overflow-hidden text-center">
+          <img
+            src={pizza.image}
+            srcset={`${src512} 512w, ${pizza.image} 1024w`}
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            alt={`Pizza ${pizza.name} fait maison au restaurant La Croix des Landes à Saint-Gorgon`}
+            class="w-full h-56 object-cover"
+            loading="lazy"
+            width="1024"
+            height="1024"
+          />
+          <div class="p-6">
+            <div class="text-neutral-800 font-semibold text-lg mb-1">{pizza.price}</div>
+            <h3 class="text-xl mb-1">{pizza.name}</h3>
+            {pizza.subtitle && <div class="text-neutral-500 text-sm uppercase mb-2">{pizza.subtitle}</div>}
+            <p class="text-neutral-600 text-sm leading-relaxed">{pizza.desc}</p>
+            <hr class="border-neutral-300 mt-6 mx-auto w-16" />
+          </div>
         </div>
-      </div>
-    ))}
+      );
+    })}
   </div>
 </MenuLayout>

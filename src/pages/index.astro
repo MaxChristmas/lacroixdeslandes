@@ -50,14 +50,87 @@ const faqSchema = {
         "@type": "Answer",
         "text": "Nous proposons une cuisine traditionnelle française fait maison avec des produits locaux : menus du jour, menus du chef, menu à la carte, burgers et pizzas. Tous nos plats sont préparés sur place."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "Y a-t-il un parking au restaurant La Croix des Landes ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Oui, La Croix des Landes dispose d'un parking gratuit sur place pour ses clients."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Le restaurant accepte-t-il les paiements par carte bancaire ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Oui, nous acceptons les paiements en espèces et par carte bancaire."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Le restaurant propose-t-il des plats à emporter ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Oui, nos menus, burgers et pizzas sont disponibles à emporter dans la limite des heures d'ouverture et de la disponibilité des produits."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Le restaurant est-il accessible aux personnes à mobilité réduite ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Oui, le restaurant La Croix des Landes est accessible aux personnes à mobilité réduite."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Combien de convives pouvez-vous accueillir pour un événement traiteur ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Notre service traiteur peut accueillir de 10 à 300 convives pour vos repas de famille, baptêmes, mariages et événements d'entreprise. Contactez-nous au 02 99 71 93 68 pour un devis."
+      }
     }
   ]
 };
+
+const imageSchema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "ImageObject",
+    "contentUrl": "https://lacroixdeslandes.fr/images/restaurant-facade.webp",
+    "name": "Façade du restaurant La Croix des Landes à Saint-Gorgon",
+    "description": "Vue extérieure du restaurant La Croix des Landes, cuisine traditionnelle fait maison à Saint-Gorgon dans le Morbihan",
+    "width": 1024,
+    "height": 768
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ImageObject",
+    "contentUrl": "https://lacroixdeslandes.fr/images/traiteur.webp",
+    "name": "Buffet traiteur La Croix des Landes",
+    "description": "Buffet traiteur préparé par le restaurant La Croix des Landes pour événements de 10 à 300 convives en Morbihan",
+    "width": 800,
+    "height": 1067
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ImageObject",
+    "contentUrl": "https://lacroixdeslandes.fr/images/team.webp",
+    "name": "Équipe du restaurant La Croix des Landes",
+    "description": "L'équipe du restaurant La Croix des Landes à Saint-Gorgon, Morbihan",
+    "width": 900,
+    "height": 675
+  }
+];
 ---
 
 <Layout title="Restaurant à Saint-Gorgon | La Croix des Landes (Morbihan) – Fait Maison & Produits Locaux">
   <Fragment slot="head">
     <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+    {imageSchema.map(img => (
+      <script is:inline type="application/ld+json" set:html={JSON.stringify(img)} />
+    ))}
   </Fragment>
 
   <!-- HERO SECTION -->

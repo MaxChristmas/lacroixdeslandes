@@ -12,6 +12,27 @@ const burgers = [
   { name: "Le P'tit Gorgonais", price: "11,40€", desc: "Pain burger, steak haché de Charolais basique.", image: "/images/burger-ptit-gorgonais.webp" },
   { name: "Crispy de poulet", price: "9,90€", desc: "Pain burger, blanc de poulet enrobé de corn flakes, salade locale, sauce tartare.", image: "/images/burger-crispy.webp" },
 ];
+
+const menuItemsSchema = {
+  "@context": "https://schema.org",
+  "@type": "Menu",
+  "name": "Carte des Burgers",
+  "hasMenuSection": {
+    "@type": "MenuSection",
+    "name": "Burgers",
+    "hasMenuItem": burgers.map(burger => ({
+      "@type": "MenuItem",
+      "name": burger.name,
+      "description": burger.desc,
+      "image": `https://lacroixdeslandes.fr${burger.image}`,
+      "offers": {
+        "@type": "Offer",
+        "price": burger.price.replace('€', '').replace(',', '.').trim(),
+        "priceCurrency": "EUR"
+      }
+    }))
+  }
+};
 ---
 
 <MenuLayout
@@ -21,17 +42,39 @@ const burgers = [
   intro="Tous nos burgers sont conçus avec du pain bio et garnis principalement de produits locaux et issus de culture biologique."
   wide
 >
+  <Fragment slot="head">
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(menuItemsSchema)} />
+  </Fragment>
+
+  <section class="mb-12 text-neutral-700 text-base leading-relaxed max-w-3xl mx-auto">
+    <h2 class="text-2xl mb-4">Des burgers artisanaux à Saint-Gorgon</h2>
+    <p class="mb-4">À La Croix des Landes, nos burgers sont bien plus qu'un simple repas rapide. Chaque burger est préparé à la commande avec du <strong>pain bio</strong> et des ingrédients soigneusement sélectionnés auprès de <strong>producteurs locaux du Morbihan</strong>. Notre viande de Charolais et d'Angus est hachée fraîche, et nos légumes — tomates, salades, oignons — proviennent de cultures biologiques de la région.</p>
+    <p>Du classique au plus gourmand, notre carte de 9 burgers propose des associations de saveurs variées : chèvre et oignons caramélisés, Roquefort et Cheddar, raclette et bacon, ou encore notre Crispy de poulet enrobé de corn flakes. Tous sont servis avec des frites maison et disponibles <strong>sur place ou à emporter</strong>.</p>
+  </section>
+
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-    {burgers.map(burger => (
-      <div class="card overflow-hidden text-center">
-        <img src={burger.image} alt={burger.name} class="w-full h-56 object-cover" loading="lazy" />
-        <div class="p-6">
-          <div class="text-neutral-800 font-semibold text-lg mb-1">{burger.price}</div>
-          <h3 class="text-xl mb-3">{burger.name}</h3>
-          <p class="text-neutral-600 text-sm leading-relaxed">{burger.desc}</p>
-          <hr class="border-neutral-300 mt-6 mx-auto w-16" />
+    {burgers.map(burger => {
+      const src512 = burger.image.replace('.webp', '-512w.webp');
+      return (
+        <div class="card overflow-hidden text-center">
+          <img
+            src={burger.image}
+            srcset={`${src512} 512w, ${burger.image} 1024w`}
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            alt={`Burger ${burger.name} fait maison au restaurant La Croix des Landes à Saint-Gorgon`}
+            class="w-full h-56 object-cover"
+            loading="lazy"
+            width="1024"
+            height="1024"
+          />
+          <div class="p-6">
+            <div class="text-neutral-800 font-semibold text-lg mb-1">{burger.price}</div>
+            <h3 class="text-xl mb-3">{burger.name}</h3>
+            <p class="text-neutral-600 text-sm leading-relaxed">{burger.desc}</p>
+            <hr class="border-neutral-300 mt-6 mx-auto w-16" />
+          </div>
         </div>
-      </div>
-    ))}
+      );
+    })}
   </div>
 </MenuLayout>
