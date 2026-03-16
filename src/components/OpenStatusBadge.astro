@@ -1,0 +1,110 @@
+---
+import openingHours from '../data/openning-hours.json';
+interface Props {
+  variant?: 'dark' | 'light';
+  class?: string;
+}
+const { variant = 'light', class: className = '' } = Astro.props;
+const periods = openingHours?.currentOpeningHours?.periods ?? null;
+---
+
+{periods && (
+  <span
+    class={`open-status-badge inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider ${className}`}
+    data-periods={JSON.stringify(periods)}
+    data-variant={variant}
+    style="visibility: hidden;"
+  >
+    <span class="open-status-dot w-2 h-2 rounded-full shrink-0"></span>
+    <span class="open-status-text"></span>
+  </span>
+)}
+
+<script is:inline>
+  (function () {
+    if (window.__openStatusDone) return;
+    window.__openStatusDone = true;
+
+    function nowInParis() {
+      var parts = new Intl.DateTimeFormat('fr-FR', {
+        timeZone: 'Europe/Paris',
+        year: 'numeric', month: '2-digit', day: '2-digit',
+        hour: '2-digit', minute: '2-digit',
+        hour12: false
+      }).formatToParts(new Date()).reduce(function (acc, p) {
+        acc[p.type] = p.value;
+        return acc;
+      }, {});
+      return {
+        year: parseInt(parts.year),
+        month: parseInt(parts.month),
+        day: parseInt(parts.day),
+        hour: parseInt(parts.hour === '24' ? '0' : parts.hour),
+        minute: parseInt(parts.minute)
+      };
+    }
+
+    function computeIsOpen(periods) {
+      var now = nowInParis();
+      var todayPeriod = null;
+      for (var i = 0; i < periods.length; i++) {
+        var p = periods[i];
+        if (
+          p.open && p.open.date &&
+          p.open.date.year === now.year &&
+          p.open.date.month === now.month &&
+          p.open.date.day === now.day &&
+          p.close && typeof p.close.hour === 'number' && typeof p.close.minute === 'number'
+        ) {
+          todayPeriod = p;
+          break;
+        }
+      }
+
+      // Jour absent des periods = fermé exceptionnellement → on affiche quand même Fermé
+      // Mais si periods est vide ou ne contient aucune date valide → null = ne rien afficher
+      if (periods.length === 0) return null;
+      if (!todayPeriod) return false;
+
+      var openMin = todayPeriod.open.hour * 60 + todayPeriod.open.minute;
+      var closeMin = todayPeriod.close.hour * 60 + todayPeriod.close.minute;
+      var nowMin = now.hour * 60 + now.minute;
+
+      return nowMin >= openMin && nowMin < closeMin;
+    }
+
+    function applyStatus(badge, isOpen) {
+      var dot = badge.querySelector('.open-status-dot');
+      var text = badge.querySelector('.open-status-text');
+      var variant = badge.getAttribute('data-variant') || 'light';
+
+      if (isOpen) {
+        dot.className = 'open-status-dot w-2 h-2 rounded-full shrink-0 bg-green-500';
+        text.textContent = 'Ouvert';
+        badge.className = badge.className.replace(/text-\S+/g, '').trim() +
+          (variant === 'dark' ? ' text-neutral-200' : ' text-neutral-700');
+        badge.style.visibility = 'visible';
+      } else {
+        dot.className = 'open-status-dot w-2 h-2 rounded-full shrink-0 bg-red-500';
+        text.textContent = 'Fermé';
+        badge.className = badge.className.replace(/text-\S+/g, '').trim() +
+          (variant === 'dark' ? ' text-neutral-400' : ' text-neutral-500');
+        badge.style.visibility = 'visible';
+      }
+      // isOpen === null → on laisse visibility: hidden (rien affiché)
+    }
+
+    try {
+      document.querySelectorAll('.open-status-badge').forEach(function (badge) {
+        var raw = badge.getAttribute('data-periods');
+        if (!raw) return;
+        var periods = JSON.parse(raw);
+        if (!Array.isArray(periods)) return;
+        var isOpen = computeIsOpen(periods);
+        if (isOpen !== null) applyStatus(badge, isOpen);
+      });
+    } catch (e) {
+      // Erreur silencieuse : les badges restent cachés
+    }
+  })();
+</script>

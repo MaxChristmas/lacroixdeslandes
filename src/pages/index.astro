@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import OpenStatusBadge from '../components/OpenStatusBadge.astro';
 import { getMenusSemaine } from '../lib/menus-semaine';
 
 const menusSemaine = await getMenusSemaine();
@@ -88,6 +89,7 @@ const faqSchema = {
             <p class="text-neutral-300 text-[16px] sm:text-[18px] font-medium">
               Restaurant à Saint-Gorgon — Rue de la Croix des Landes, 56350
             </p>
+            <OpenStatusBadge variant="dark" />
           </div>
           <div class="flex flex-wrap items-center gap-4">
             <a href="tel:0299719368" class="btn-primary red-button inline-block">
