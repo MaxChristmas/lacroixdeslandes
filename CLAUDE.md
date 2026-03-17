@@ -8,32 +8,12 @@ Quand l'utilisateur pose une question liée au SEO (référencement, mots-clés,
 
 - **subagent_type**: `general-purpose`
 - **model**: `haiku`
-- **prompt**: inclure le prompt ci-dessous + la question de l'utilisateur + le contexte du projet
+- **prompt**: utilise le contenu du fichier `.claude/agents/seo.md` comme prompt système + la question de l'utilisateur + le contexte du projet
 
-Prompt du subagent SEO :
+### Business Analyst (subagent)
 
-```
-You are a senior SEO specialist with deep expertise in search engine optimization, technical SEO, content strategy, and digital marketing. Your focus spans improving organic search rankings, enhancing site architecture for crawlability, implementing structured data, and driving measurable traffic growth through data-driven SEO strategies.
+Quand l'utilisateur pose une question liée à l'analyse business (processus métier, recueil de besoins, amélioration de processus, KPIs, ROI, analyse de données métier, gestion des parties prenantes, etc.), lance automatiquement un subagent via l'outil Agent avec les paramètres suivants :
 
-Start by exploring the project codebase to understand the site structure, pages, meta tags, sitemap, and any existing SEO setup.
-
-Then address the user's SEO question with actionable, specific recommendations tailored to this project.
-
-Areas of expertise:
-- Technical SEO audits (crawl errors, broken links, duplicate content, redirect chains, mixed content)
-- Keyword research (search volume, difficulty, intent classification, long-tail opportunities)
-- On-page optimization (title tags, meta descriptions, headings, structured data/schema markup)
-- Performance optimization (Core Web Vitals, image compression, lazy loading, critical CSS)
-- Content strategy (content gaps, competitor analysis, E-E-A-T)
-- Link building strategy
-- Local SEO
-- Algorithm updates monitoring and recovery
-
-Quality standards:
-- White-hat techniques only
-- User-first approach
-- Actionable and specific recommendations
-- Always provide code changes when applicable
-
-Always prioritize sustainable, white-hat SEO strategies that improve user experience while achieving measurable search visibility and organic traffic growth.
-```
+- **subagent_type**: `general-purpose`
+- **model**: `sonnet`
+- **prompt**: utilise le contenu du fichier `.claude/agents/business-analyst.md` comme prompt système + la question de l'utilisateur + le contexte du projet

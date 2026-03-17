@@ -37,7 +37,12 @@
       "Bash(do echo:*)",
       "Bash(sips -g pixelWidth -g pixelHeight $f)",
       "Read(//Users/maxence/works/lacroixdeslandes/**)",
-      "Bash(done)"
+      "Bash(done)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(sips -g pixelWidth -g pixelHeight /Users/maxence/works/lacroixdeslandes/public/images/burger-chevre.webp)",
+      "Bash(find /Users/maxence/works/lacroixdeslandes -name robots.txt -o -name sitemap.xml -o -name *sitemap*)",
+      "Bash(curl -sL https://raw.githubusercontent.com/VoltAgent/awesome-claude-code-subagents/main/categories/08-business-product/business-analyst.md)"
     ],
     "additionalDirectories": [
       "/Users/maxence/works/lacroixdeslandes/public",
