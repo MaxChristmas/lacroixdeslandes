@@ -9,8 +9,8 @@
           "minute": 30,
           "date": {
             "year": 2026,
-            "month": 3,
-            "day": 29
+            "month": 4,
+            "day": 5
           }
         },
         "close": {
@@ -19,8 +19,8 @@
           "minute": 0,
           "date": {
             "year": 2026,
-            "month": 3,
-            "day": 29
+            "month": 4,
+            "day": 5
           }
         }
       },
@@ -97,8 +97,8 @@
           "minute": 0,
           "date": {
             "year": 2026,
-            "month": 3,
-            "day": 26
+            "month": 4,
+            "day": 2
           }
         },
         "close": {
@@ -107,8 +107,8 @@
           "minute": 0,
           "date": {
             "year": 2026,
-            "month": 3,
-            "day": 26
+            "month": 4,
+            "day": 2
           }
         }
       },
@@ -119,8 +119,8 @@
           "minute": 30,
           "date": {
             "year": 2026,
-            "month": 3,
-            "day": 27
+            "month": 4,
+            "day": 3
           }
         },
         "close": {
@@ -129,8 +129,8 @@
           "minute": 0,
           "date": {
             "year": 2026,
-            "month": 3,
-            "day": 27
+            "month": 4,
+            "day": 3
           }
         }
       },
@@ -141,8 +141,8 @@
           "minute": 30,
           "date": {
             "year": 2026,
-            "month": 3,
-            "day": 28
+            "month": 4,
+            "day": 4
           }
         },
         "close": {
@@ -151,8 +151,8 @@
           "minute": 0,
           "date": {
             "year": 2026,
-            "month": 3,
-            "day": 28
+            "month": 4,
+            "day": 4
           }
         }
       }
@@ -166,6 +166,6 @@
       "Saturday: 9:30 AM – 9:00 PM",
       "Sunday: 9:30 AM – 9:00 PM"
     ],
-    "nextOpenTime": "2026-03-26T08:00:00Z"
+    "nextOpenTime": "2026-03-30T09:00:00Z"
   }
 }
