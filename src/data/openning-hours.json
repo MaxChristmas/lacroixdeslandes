@@ -9,8 +9,8 @@
           "minute": 30,
           "date": {
             "year": 2026,
-            "month": 4,
-            "day": 26
+            "month": 5,
+            "day": 3
           }
         },
         "close": {
@@ -19,8 +19,8 @@
           "minute": 0,
           "date": {
             "year": 2026,
-            "month": 4,
-            "day": 26
+            "month": 5,
+            "day": 3
           }
         }
       },
@@ -98,7 +98,7 @@
           "date": {
             "year": 2026,
             "month": 4,
-            "day": 23
+            "day": 30
           }
         },
         "close": {
@@ -108,29 +108,7 @@
           "date": {
             "year": 2026,
             "month": 4,
-            "day": 23
-          }
-        }
-      },
-      {
-        "open": {
-          "day": 5,
-          "hour": 9,
-          "minute": 30,
-          "date": {
-            "year": 2026,
-            "month": 4,
-            "day": 24
-          }
-        },
-        "close": {
-          "day": 5,
-          "hour": 21,
-          "minute": 0,
-          "date": {
-            "year": 2026,
-            "month": 4,
-            "day": 24
+            "day": 30
           }
         }
       },
@@ -141,8 +119,8 @@
           "minute": 30,
           "date": {
             "year": 2026,
-            "month": 4,
-            "day": 25
+            "month": 5,
+            "day": 2
           }
         },
         "close": {
@@ -151,8 +129,8 @@
           "minute": 0,
           "date": {
             "year": 2026,
-            "month": 4,
-            "day": 25
+            "month": 5,
+            "day": 2
           }
         }
       }
@@ -162,10 +140,19 @@
       "Tuesday: 9:30 AM – 4:00 PM",
       "Wednesday: 9:30 AM – 4:00 PM",
       "Thursday: 9:00 AM – 5:00 PM",
-      "Friday: 9:30 AM – 9:00 PM",
+      "Friday: Closed",
       "Saturday: 9:30 AM – 9:00 PM",
       "Sunday: 9:30 AM – 9:00 PM"
     ],
-    "nextOpenTime": "2026-04-24T07:30:00Z"
+    "specialDays": [
+      {
+        "date": {
+          "year": 2026,
+          "month": 5,
+          "day": 1
+        }
+      }
+    ],
+    "nextOpenTime": "2026-04-27T09:00:00Z"
   }
 }
