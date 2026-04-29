@@ -31,8 +31,8 @@
           "minute": 0,
           "date": {
             "year": 2026,
-            "month": 4,
-            "day": 27
+            "month": 5,
+            "day": 4
           }
         },
         "close": {
@@ -41,8 +41,8 @@
           "minute": 0,
           "date": {
             "year": 2026,
-            "month": 4,
-            "day": 27
+            "month": 5,
+            "day": 4
           }
         }
       },
@@ -53,8 +53,8 @@
           "minute": 30,
           "date": {
             "year": 2026,
-            "month": 4,
-            "day": 28
+            "month": 5,
+            "day": 5
           }
         },
         "close": {
@@ -63,8 +63,8 @@
           "minute": 0,
           "date": {
             "year": 2026,
-            "month": 4,
-            "day": 28
+            "month": 5,
+            "day": 5
           }
         }
       },
@@ -153,6 +153,6 @@
         }
       }
     ],
-    "nextOpenTime": "2026-04-27T09:00:00Z"
+    "nextOpenTime": "2026-04-29T07:30:00Z"
   }
 }
