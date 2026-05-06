@@ -1,6 +1,6 @@
 {
   "currentOpeningHours": {
-    "openNow": false,
+    "openNow": true,
     "periods": [
       {
         "open": {
@@ -32,7 +32,7 @@
           "date": {
             "year": 2026,
             "month": 5,
-            "day": 4
+            "day": 11
           }
         },
         "close": {
@@ -42,7 +42,7 @@
           "date": {
             "year": 2026,
             "month": 5,
-            "day": 4
+            "day": 11
           }
         }
       },
@@ -54,7 +54,7 @@
           "date": {
             "year": 2026,
             "month": 5,
-            "day": 5
+            "day": 12
           }
         },
         "close": {
@@ -64,7 +64,7 @@
           "date": {
             "year": 2026,
             "month": 5,
-            "day": 5
+            "day": 12
           }
         }
       },
@@ -153,6 +153,6 @@
         }
       }
     ],
-    "nextOpenTime": "2026-05-04T09:00:00Z"
+    "nextCloseTime": "2026-05-06T14:00:00Z"
   }
 }
