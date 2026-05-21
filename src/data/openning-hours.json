@@ -1,38 +1,16 @@
 {
   "currentOpeningHours": {
-    "openNow": false,
+    "openNow": true,
     "periods": [
       {
         "open": {
-          "day": 1,
-          "hour": 11,
-          "minute": 0,
-          "date": {
-            "year": 2026,
-            "month": 5,
-            "day": 18
-          }
-        },
-        "close": {
-          "day": 1,
-          "hour": 16,
-          "minute": 0,
-          "date": {
-            "year": 2026,
-            "month": 5,
-            "day": 18
-          }
-        }
-      },
-      {
-        "open": {
           "day": 2,
           "hour": 9,
           "minute": 30,
           "date": {
             "year": 2026,
             "month": 5,
-            "day": 19
+            "day": 26
           }
         },
         "close": {
@@ -42,7 +20,7 @@
           "date": {
             "year": 2026,
             "month": 5,
-            "day": 19
+            "day": 26
           }
         }
       },
@@ -54,7 +32,7 @@
           "date": {
             "year": 2026,
             "month": 5,
-            "day": 20
+            "day": 27
           }
         },
         "close": {
@@ -64,7 +42,7 @@
           "date": {
             "year": 2026,
             "month": 5,
-            "day": 20
+            "day": 27
           }
         }
       },
@@ -114,7 +92,7 @@
       }
     ],
     "weekdayDescriptions": [
-      "Monday: 11:00 AM – 4:00 PM",
+      "Monday: Closed",
       "Tuesday: 9:30 AM – 4:00 PM",
       "Wednesday: 9:30 AM – 4:00 PM",
       "Thursday: 9:00 AM – 5:00 PM",
@@ -136,8 +114,15 @@
           "month": 5,
           "day": 24
         }
+      },
+      {
+        "date": {
+          "year": 2026,
+          "month": 5,
+          "day": 25
+        }
       }
     ],
-    "nextOpenTime": "2026-05-18T09:00:00Z"
+    "nextCloseTime": "2026-05-21T15:00:00Z"
   }
 }
