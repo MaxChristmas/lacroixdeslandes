@@ -1,7 +1,29 @@
 {
   "currentOpeningHours": {
-    "openNow": true,
+    "openNow": false,
     "periods": [
+      {
+        "open": {
+          "day": 0,
+          "hour": 9,
+          "minute": 30,
+          "date": {
+            "year": 2026,
+            "month": 5,
+            "day": 31
+          }
+        },
+        "close": {
+          "day": 0,
+          "hour": 21,
+          "minute": 0,
+          "date": {
+            "year": 2026,
+            "month": 5,
+            "day": 31
+          }
+        }
+      },
       {
         "open": {
           "day": 2,
@@ -54,7 +76,7 @@
           "date": {
             "year": 2026,
             "month": 5,
-            "day": 21
+            "day": 28
           }
         },
         "close": {
@@ -64,7 +86,7 @@
           "date": {
             "year": 2026,
             "month": 5,
-            "day": 21
+            "day": 28
           }
         }
       },
@@ -76,7 +98,7 @@
           "date": {
             "year": 2026,
             "month": 5,
-            "day": 22
+            "day": 29
           }
         },
         "close": {
@@ -86,7 +108,29 @@
           "date": {
             "year": 2026,
             "month": 5,
-            "day": 22
+            "day": 29
+          }
+        }
+      },
+      {
+        "open": {
+          "day": 6,
+          "hour": 9,
+          "minute": 30,
+          "date": {
+            "year": 2026,
+            "month": 5,
+            "day": 30
+          }
+        },
+        "close": {
+          "day": 6,
+          "hour": 21,
+          "minute": 0,
+          "date": {
+            "year": 2026,
+            "month": 5,
+            "day": 30
           }
         }
       }
@@ -97,24 +141,10 @@
       "Wednesday: 9:30 AM – 4:00 PM",
       "Thursday: 9:00 AM – 5:00 PM",
       "Friday: 9:30 AM – 9:00 PM",
-      "Saturday: Closed",
-      "Sunday: Closed"
+      "Saturday: 9:30 AM – 9:00 PM",
+      "Sunday: 9:30 AM – 9:00 PM"
     ],
     "specialDays": [
-      {
-        "date": {
-          "year": 2026,
-          "month": 5,
-          "day": 23
-        }
-      },
-      {
-        "date": {
-          "year": 2026,
-          "month": 5,
-          "day": 24
-        }
-      },
       {
         "date": {
           "year": 2026,
@@ -123,6 +153,6 @@
         }
       }
     ],
-    "nextCloseTime": "2026-05-21T15:00:00Z"
+    "nextOpenTime": "2026-05-26T07:30:00Z"
   }
 }
