@@ -32,7 +32,7 @@
           "date": {
             "year": 2026,
             "month": 7,
-            "day": 13
+            "day": 20
           }
         },
         "close": {
@@ -42,7 +42,29 @@
           "date": {
             "year": 2026,
             "month": 7,
-            "day": 13
+            "day": 20
+          }
+        }
+      },
+      {
+        "open": {
+          "day": 2,
+          "hour": 9,
+          "minute": 30,
+          "date": {
+            "year": 2026,
+            "month": 7,
+            "day": 21
+          }
+        },
+        "close": {
+          "day": 2,
+          "hour": 16,
+          "minute": 0,
+          "date": {
+            "year": 2026,
+            "month": 7,
+            "day": 21
           }
         }
       },
@@ -137,22 +159,13 @@
     ],
     "weekdayDescriptions": [
       "Monday: 11:00 AM – 4:00 PM",
-      "Tuesday: Closed",
+      "Tuesday: 9:30 AM – 4:00 PM",
       "Wednesday: 9:30 AM – 4:00 PM",
       "Thursday: 9:00 AM – 5:00 PM",
       "Friday: 9:30 AM – 9:00 PM",
       "Saturday: 9:30 AM – 9:00 PM",
       "Sunday: 9:30 AM – 9:00 PM"
     ],
-    "specialDays": [
-      {
-        "date": {
-          "year": 2026,
-          "month": 7,
-          "day": 14
-        }
-      }
-    ],
-    "nextOpenTime": "2026-07-13T09:00:00Z"
+    "nextOpenTime": "2026-07-16T07:00:00Z"
   }
 }
