@@ -1,6 +1,6 @@
 {
   "currentOpeningHours": {
-    "openNow": false,
+    "openNow": true,
     "periods": [
       {
         "open": {
@@ -32,7 +32,7 @@
           "date": {
             "year": 2026,
             "month": 7,
-            "day": 20
+            "day": 27
           }
         },
         "close": {
@@ -42,7 +42,7 @@
           "date": {
             "year": 2026,
             "month": 7,
-            "day": 20
+            "day": 27
           }
         }
       },
@@ -54,7 +54,7 @@
           "date": {
             "year": 2026,
             "month": 7,
-            "day": 21
+            "day": 28
           }
         },
         "close": {
@@ -64,7 +64,7 @@
           "date": {
             "year": 2026,
             "month": 7,
-            "day": 21
+            "day": 28
           }
         }
       },
@@ -76,7 +76,7 @@
           "date": {
             "year": 2026,
             "month": 7,
-            "day": 22
+            "day": 29
           }
         },
         "close": {
@@ -86,7 +86,7 @@
           "date": {
             "year": 2026,
             "month": 7,
-            "day": 22
+            "day": 29
           }
         }
       },
@@ -98,7 +98,7 @@
           "date": {
             "year": 2026,
             "month": 7,
-            "day": 23
+            "day": 30
           }
         },
         "close": {
@@ -108,7 +108,7 @@
           "date": {
             "year": 2026,
             "month": 7,
-            "day": 23
+            "day": 30
           }
         }
       },
@@ -166,6 +166,6 @@
       "Saturday: 9:30 AM – 9:00 PM",
       "Sunday: 9:30 AM – 9:00 PM"
     ],
-    "nextOpenTime": "2026-07-20T09:00:00Z"
+    "nextCloseTime": "2026-07-24T19:00:00Z"
   }
 }
