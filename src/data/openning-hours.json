@@ -1,171 +1,56 @@
 {
   "currentOpeningHours": {
     "openNow": false,
-    "periods": [
+    "specialDays": [
       {
-        "open": {
-          "day": 0,
-          "hour": 9,
-          "minute": 30,
-          "date": {
-            "year": 2026,
-            "month": 8,
-            "day": 2
-          }
-        },
-        "close": {
-          "day": 0,
-          "hour": 21,
-          "minute": 0,
-          "date": {
-            "year": 2026,
-            "month": 8,
-            "day": 2
-          }
+        "date": {
+          "year": 2026,
+          "month": 8,
+          "day": 3
         }
       },
       {
-        "open": {
-          "day": 1,
-          "hour": 11,
-          "minute": 0,
-          "date": {
-            "year": 2026,
-            "month": 7,
-            "day": 27
-          }
-        },
-        "close": {
-          "day": 1,
-          "hour": 16,
-          "minute": 0,
-          "date": {
-            "year": 2026,
-            "month": 7,
-            "day": 27
-          }
+        "date": {
+          "year": 2026,
+          "month": 8,
+          "day": 4
         }
       },
       {
-        "open": {
-          "day": 2,
-          "hour": 9,
-          "minute": 30,
-          "date": {
-            "year": 2026,
-            "month": 7,
-            "day": 28
-          }
-        },
-        "close": {
-          "day": 2,
-          "hour": 16,
-          "minute": 0,
-          "date": {
-            "year": 2026,
-            "month": 7,
-            "day": 28
-          }
+        "date": {
+          "year": 2026,
+          "month": 8,
+          "day": 5
         }
       },
       {
-        "open": {
-          "day": 3,
-          "hour": 9,
-          "minute": 30,
-          "date": {
-            "year": 2026,
-            "month": 7,
-            "day": 29
-          }
-        },
-        "close": {
-          "day": 3,
-          "hour": 16,
-          "minute": 0,
-          "date": {
-            "year": 2026,
-            "month": 7,
-            "day": 29
-          }
+        "date": {
+          "year": 2026,
+          "month": 8,
+          "day": 6
         }
       },
       {
-        "open": {
-          "day": 4,
-          "hour": 9,
-          "minute": 0,
-          "date": {
-            "year": 2026,
-            "month": 7,
-            "day": 30
-          }
-        },
-        "close": {
-          "day": 4,
-          "hour": 17,
-          "minute": 0,
-          "date": {
-            "year": 2026,
-            "month": 7,
-            "day": 30
-          }
+        "date": {
+          "year": 2026,
+          "month": 8,
+          "day": 7
         }
       },
       {
-        "open": {
-          "day": 5,
-          "hour": 9,
-          "minute": 30,
-          "date": {
-            "year": 2026,
-            "month": 7,
-            "day": 31
-          }
-        },
-        "close": {
-          "day": 5,
-          "hour": 21,
-          "minute": 0,
-          "date": {
-            "year": 2026,
-            "month": 7,
-            "day": 31
-          }
+        "date": {
+          "year": 2026,
+          "month": 8,
+          "day": 8
         }
       },
       {
-        "open": {
-          "day": 6,
-          "hour": 9,
-          "minute": 30,
-          "date": {
-            "year": 2026,
-            "month": 8,
-            "day": 1
-          }
-        },
-        "close": {
-          "day": 6,
-          "hour": 21,
-          "minute": 0,
-          "date": {
-            "year": 2026,
-            "month": 8,
-            "day": 1
-          }
+        "date": {
+          "year": 2026,
+          "month": 8,
+          "day": 9
         }
       }
-    ],
-    "weekdayDescriptions": [
-      "Monday: 11:00 AM – 4:00 PM",
-      "Tuesday: 9:30 AM – 4:00 PM",
-      "Wednesday: 9:30 AM – 4:00 PM",
-      "Thursday: 9:00 AM – 5:00 PM",
-      "Friday: 9:30 AM – 9:00 PM",
-      "Saturday: 9:30 AM – 9:00 PM",
-      "Sunday: 9:30 AM – 9:00 PM"
-    ],
-    "nextOpenTime": "2026-07-27T09:00:00Z"
+    ]
   }
 }
