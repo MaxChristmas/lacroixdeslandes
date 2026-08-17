@@ -1,83 +1,56 @@
 {
   "currentOpeningHours": {
     "openNow": false,
-    "periods": [
-      {
-        "open": {
-          "day": 6,
-          "hour": 9,
-          "minute": 30,
-          "date": {
-            "year": 2026,
-            "month": 8,
-            "day": 15
-          }
-        },
-        "close": {
-          "day": 6,
-          "hour": 21,
-          "minute": 0,
-          "date": {
-            "year": 2026,
-            "month": 8,
-            "day": 15
-          }
-        }
-      }
-    ],
-    "weekdayDescriptions": [
-      "Monday: Closed",
-      "Tuesday: Closed",
-      "Wednesday: Closed",
-      "Thursday: Closed",
-      "Friday: Closed",
-      "Saturday: 9:30 AM – 9:00 PM",
-      "Sunday: Closed"
-    ],
     "specialDays": [
       {
         "date": {
           "year": 2026,
           "month": 8,
-          "day": 10
+          "day": 17
         }
       },
       {
         "date": {
           "year": 2026,
           "month": 8,
-          "day": 11
+          "day": 18
         }
       },
       {
         "date": {
           "year": 2026,
           "month": 8,
-          "day": 12
+          "day": 19
         }
       },
       {
         "date": {
           "year": 2026,
           "month": 8,
-          "day": 13
+          "day": 20
         }
       },
       {
         "date": {
           "year": 2026,
           "month": 8,
-          "day": 14
+          "day": 21
         }
       },
       {
         "date": {
           "year": 2026,
           "month": 8,
-          "day": 16
+          "day": 22
+        }
+      },
+      {
+        "date": {
+          "year": 2026,
+          "month": 8,
+          "day": 23
         }
       }
-    ],
-    "nextOpenTime": "2026-08-15T07:30:00Z"
+    ]
   }
 }
