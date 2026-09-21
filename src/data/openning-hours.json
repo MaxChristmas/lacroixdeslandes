@@ -10,7 +10,7 @@
           "date": {
             "year": 2026,
             "month": 9,
-            "day": 20
+            "day": 27
           }
         },
         "close": {
@@ -20,7 +20,7 @@
           "date": {
             "year": 2026,
             "month": 9,
-            "day": 20
+            "day": 27
           }
         }
       },
@@ -98,7 +98,7 @@
           "date": {
             "year": 2026,
             "month": 9,
-            "day": 17
+            "day": 24
           }
         },
         "close": {
@@ -108,7 +108,7 @@
           "date": {
             "year": 2026,
             "month": 9,
-            "day": 17
+            "day": 24
           }
         }
       },
@@ -120,7 +120,7 @@
           "date": {
             "year": 2026,
             "month": 9,
-            "day": 18
+            "day": 25
           }
         },
         "close": {
@@ -130,7 +130,7 @@
           "date": {
             "year": 2026,
             "month": 9,
-            "day": 18
+            "day": 25
           }
         }
       },
@@ -142,7 +142,7 @@
           "date": {
             "year": 2026,
             "month": 9,
-            "day": 19
+            "day": 26
           }
         },
         "close": {
@@ -152,7 +152,7 @@
           "date": {
             "year": 2026,
             "month": 9,
-            "day": 19
+            "day": 26
           }
         }
       }
@@ -166,6 +166,6 @@
       "Saturday: 9:30 AM – 9:00 PM",
       "Sunday: 9:30 AM – 9:00 PM"
     ],
-    "nextOpenTime": "2026-09-18T07:30:00Z"
+    "nextOpenTime": "2026-09-21T09:00:00Z"
   }
 }
