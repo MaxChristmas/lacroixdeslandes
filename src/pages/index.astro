@@ -399,17 +399,92 @@ const imageSchema = [
   <section id="team" class="section bg-neutral-800">
     <div class="container-default">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-        <!-- Team photo -->
-        <div class="max-w-[625px]">
+        <!-- Team photo + video -->
+        <div class="relative max-w-[625px] w-full pb-[24%]">
           <img
             src="/images/team.webp"
             alt="Photo de l'équipe la croix des landes"
-            class="w-full object-cover"
+            class="w-[80%] object-cover"
             width="900"
             height="675"
             loading="lazy"
           />
+
+          <!-- Video card (YouTube Short, ouverte au clic dans une lightbox) -->
+          <button
+            type="button"
+            id="team-video-open"
+            class="group absolute right-0 bottom-0 w-[44%] aspect-4/5 overflow-hidden border-4 sm:border-[6px] border-neutral-800 shadow-[0_14px_42px_0_rgba(0,0,0,0.6)] cursor-pointer"
+            aria-label="Lire la vidéo de La Croix des Landes"
+          >
+            <img
+              src="/images/team-video.webp"
+              alt="En cuisine à La Croix des Landes"
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              width="478"
+              height="570"
+              loading="lazy"
+            />
+            <span class="absolute inset-0 bg-linear-to-t from-neutral-800/90 via-neutral-800/10 to-transparent"></span>
+            <span class="absolute inset-0 flex items-center justify-center">
+              <span class="relative flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-red-lcdl text-white shadow-lg transition-transform duration-300 group-hover:scale-110">
+                <span class="absolute inset-0 rounded-full bg-red-lcdl opacity-60 animate-ping"></span>
+                <svg class="relative w-5 h-5 sm:w-6 sm:h-6 ml-1" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z" /></svg>
+              </span>
+            </span>
+            <span class="absolute left-3 right-3 bottom-3 sm:left-4 sm:bottom-4 text-left">
+              <span class="block w-6 h-px bg-neutral-100 mb-2"></span>
+              <span class="block text-neutral-100 text-[10px] sm:text-xs leading-tight font-semibold uppercase tracking-wider">Découvrez-nous en vidéo</span>
+            </span>
+          </button>
         </div>
+
+        <!-- Video lightbox -->
+        <dialog
+          id="team-video-dialog"
+          class="m-auto bg-transparent p-0 max-w-none max-h-none overflow-visible backdrop:bg-neutral-800/90 backdrop:backdrop-blur-sm"
+          aria-label="Vidéo de La Croix des Landes"
+        >
+          <div class="relative h-[85vh] max-h-[800px] aspect-9/16 max-w-[calc(100vw-32px)] bg-neutral-800 shadow-[0_14px_42px_0_rgba(0,0,0,0.6)]">
+            <div id="team-video-frame" class="w-full h-full"></div>
+            <button
+              type="button"
+              id="team-video-close"
+              class="absolute -top-12 right-0 flex items-center gap-2 text-neutral-100 text-xs font-semibold uppercase tracking-wider hover:text-red-lcdl transition-colors cursor-pointer"
+            >
+              Fermer
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+            </button>
+          </div>
+        </dialog>
+        <script is:inline>
+          (function () {
+            var VIDEO_ID = '-Io_yD4fMjY';
+            var openBtn = document.getElementById('team-video-open');
+            var dialog = document.getElementById('team-video-dialog');
+            var frame = document.getElementById('team-video-frame');
+            var closeBtn = document.getElementById('team-video-close');
+            if (!openBtn || !dialog || !frame) return;
+
+            openBtn.addEventListener('click', function () {
+              var iframe = document.createElement('iframe');
+              iframe.src = 'https://www.youtube-nocookie.com/embed/' + VIDEO_ID + '?autoplay=1&playsinline=1&rel=0';
+              iframe.title = 'La Croix des Landes en vidéo';
+              iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+              iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+              iframe.allowFullscreen = true;
+              iframe.className = 'w-full h-full';
+              frame.replaceChildren(iframe);
+              dialog.showModal();
+            });
+
+            closeBtn.addEventListener('click', function () { dialog.close(); });
+            // Clic sur le fond = fermeture
+            dialog.addEventListener('click', function (e) { if (e.target === dialog) dialog.close(); });
+            // Coupe la vidéo à la fermeture
+            dialog.addEventListener('close', function () { frame.replaceChildren(); });
+          })();
+        </script>
 
         <!-- Team text -->
         <div>
