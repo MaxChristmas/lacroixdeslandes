@@ -1,0 +1,56 @@
+---
+// Lightbox vidéo YouTube partagée : tout bouton avec [data-video-open] l'ouvre.
+// L'iframe n'est créée qu'au clic (youtube-nocookie, aucun cookie avant lecture).
+interface Props {
+  videoId: string;
+  title?: string;
+}
+const { videoId, title = 'La Croix des Landes en vidéo' } = Astro.props;
+---
+
+<dialog
+  id="video-dialog"
+  class="m-auto bg-transparent p-0 max-w-none max-h-none overflow-visible backdrop:bg-neutral-800/90 backdrop:backdrop-blur-sm"
+  aria-label={title}
+>
+  <div class="relative h-[85vh] max-h-[800px] aspect-9/16 max-w-[calc(100vw-32px)] bg-neutral-800 shadow-[0_14px_42px_0_rgba(0,0,0,0.6)]">
+    <div id="video-frame" class="w-full h-full"></div>
+    <button
+      type="button"
+      id="video-close"
+      class="absolute -top-12 right-0 flex items-center gap-2 text-neutral-100 text-xs font-semibold uppercase tracking-wider hover:text-red-lcdl transition-colors cursor-pointer"
+    >
+      Fermer
+      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+    </button>
+  </div>
+</dialog>
+
+<script is:inline define:vars={{ videoId, title }}>
+  (function () {
+    var dialog = document.getElementById('video-dialog');
+    var frame = document.getElementById('video-frame');
+    var closeBtn = document.getElementById('video-close');
+    if (!dialog || !frame) return;
+
+    document.querySelectorAll('[data-video-open]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var iframe = document.createElement('iframe');
+        iframe.src = 'https://www.youtube-nocookie.com/embed/' + videoId + '?autoplay=1&playsinline=1&rel=0';
+        iframe.title = title;
+        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+        iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+        iframe.allowFullscreen = true;
+        iframe.className = 'w-full h-full';
+        frame.replaceChildren(iframe);
+        dialog.showModal();
+      });
+    });
+
+    closeBtn.addEventListener('click', function () { dialog.close(); });
+    // Clic sur le fond = fermeture
+    dialog.addEventListener('click', function (e) { if (e.target === dialog) dialog.close(); });
+    // Coupe la vidéo à la fermeture
+    dialog.addEventListener('close', function () { frame.replaceChildren(); });
+  })();
+</script>
