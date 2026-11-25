@@ -32,7 +32,7 @@
           "date": {
             "year": 2026,
             "month": 11,
-            "day": 23
+            "day": 30
           }
         },
         "close": {
@@ -42,7 +42,7 @@
           "date": {
             "year": 2026,
             "month": 11,
-            "day": 23
+            "day": 30
           }
         }
       },
@@ -53,8 +53,8 @@
           "minute": 30,
           "date": {
             "year": 2026,
-            "month": 11,
-            "day": 24
+            "month": 12,
+            "day": 1
           }
         },
         "close": {
@@ -63,8 +63,8 @@
           "minute": 0,
           "date": {
             "year": 2026,
-            "month": 11,
-            "day": 24
+            "month": 12,
+            "day": 1
           }
         }
       },
@@ -166,6 +166,6 @@
       "Saturday: 9:30 AM – 9:00 PM",
       "Sunday: 9:30 AM – 9:00 PM"
     ],
-    "nextOpenTime": "2026-11-23T10:00:00Z"
+    "nextOpenTime": "2026-11-26T08:00:00Z"
   }
 }
